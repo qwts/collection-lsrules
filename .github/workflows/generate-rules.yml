@@ -17,6 +17,9 @@ on:
       - 'scripts/generate-rules.js'
   workflow_dispatch: # Allow manual triggering
 
+permissions:
+  contents: write # Required for the commit-and-push step below
+
 jobs:
   generate:
     runs-on: ubuntu-latest
