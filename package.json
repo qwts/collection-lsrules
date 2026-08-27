@@ -1,0 +1,25 @@
+{
+  "name": "collection-lsrules",
+  "version": "1.0.0",
+  "description": "Little Snitch rule generator for coding agents",
+  "main": "generate-rules.js",
+  "scripts": {
+    "generate": "node scripts/generate-rules.js",
+    "extract": "node scripts/generate-rules.js extract",
+    "format-remotes": "node scripts/format-remotes.js --format",
+    "extract-remotes": "node scripts/format-remotes.js --extract",
+    "merge-remotes": "node scripts/format-remotes.js --merge",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": [
+    "little-snitch",
+    "rules",
+    "firewall",
+    "coding-agents"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

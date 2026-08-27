@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Little Snitch Paths",
+  "description": "Application paths for coding agents",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "name": { "type": "string" },
+      "displayName": { "type": "string" },
+      "process": { "type": "string" },
+      "description": { "type": "string" }
+    },
+    "required": ["name", "displayName", "process"]
+  }
+}
