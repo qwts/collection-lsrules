@@ -1,0 +1,38 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE
+# Note: .vscode/ is intentionally NOT ignored here. This project ships
+# shared tasks.json, settings.json, and launch.json that the docs
+# (docs/HOW-TO-USE.md, docs/FORMATTER-GUIDE.md) rely on being committed.
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+*.temp
+
+# Test output
+coverage/
+
+# Logs
+logs/
+*.log

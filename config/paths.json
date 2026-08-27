@@ -1,0 +1,62 @@
+[
+  {
+    "name": "chatgpt",
+    "displayName": "ChatGPT",
+    "process": "/Applications/ChatGPT.app/Contents/MacOS/ChatGPT",
+    "description": "OpenAI's ChatGPT desktop app"
+  },
+  {
+    "name": "claude-desktop",
+    "displayName": "Claude Desktop",
+    "process": "/Applications/Claude.app/Contents/MacOS/Claude",
+    "description": "Anthropic's Claude desktop app"
+  },
+  {
+    "name": "cursor",
+    "displayName": "Cursor",
+    "process": "/Applications/Cursor.app/Contents/MacOS/Cursor",
+    "description": "AI-powered code editor"
+  },
+  {
+    "name": "devin-desktop",
+    "displayName": "Devin Desktop",
+    "process": "/Applications/Devin.app/Contents/MacOS/Devin",
+    "description": "Cognition AI's Devin desktop app"
+  },
+  {
+    "name": "kiro",
+    "displayName": "Kiro",
+    "process": "/Applications/Kiro.app/Contents/MacOS/Electron",
+    "description": "Kiro AI development environment"
+  },
+  {
+    "name": "muse-cli",
+    "displayName": "Muse CLI",
+    "process": "~/.local/bin/Muse",
+    "description": "Muse command-line tool. Replace ~ with your home directory if your Little Snitch version does not expand it."
+  },
+  {
+    "name": "opencode-cli",
+    "displayName": "OpenCode CLI",
+    "process": "~/.opencode/bin/opencode",
+    "description": "OpenCode command-line tool. Replace ~ with your home directory if your Little Snitch version does not expand it."
+  },
+  {
+    "name": "claude-cli",
+    "displayName": "Claude CLI",
+    "process": "~/.local/bin/claude",
+    "description": "Claude command-line interface. Replace ~ with your home directory if your Little Snitch version does not expand it."
+  },
+  {
+    "name": "devin-cli",
+    "displayName": "Devin CLI",
+    "process": "~/.local/bin/devin",
+    "description": "Devin command-line interface. Replace ~ with your home directory if your Little Snitch version does not expand it."
+  },
+  {
+    "name": "codex-cli",
+    "displayName": "Codex CLI",
+    "process": "~/.local/bin/codex",
+    "description": "Codex command-line interface. Replace ~ with your home directory if your Little Snitch version does not expand it."
+  }
+]

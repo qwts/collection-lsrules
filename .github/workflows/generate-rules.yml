@@ -1,0 +1,69 @@
+name: Generate Little Snitch Rules
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'config/paths.json'
+      - 'config/remotes.json'
+      - '.github/workflows/generate-rules.yml'
+      - 'scripts/generate-rules.js'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'config/paths.json'
+      - 'config/remotes.json'
+      - '.github/workflows/generate-rules.yml'
+      - 'scripts/generate-rules.js'
+  workflow_dispatch: # Allow manual triggering
+
+permissions:
+  contents: write # Required for the commit-and-push step below
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        
+    - name: Generate coding.lsrules
+      run: |
+        node scripts/generate-rules.js
+        
+    - name: Check if coding.lsrules changed
+      id: check-changes
+      run: |
+        if git diff --exit-code --name-only generated/coding.lsrules; then
+          echo "changes=false" >> $GITHUB_OUTPUT
+          echo "No changes to coding.lsrules"
+        else
+          echo "changes=true" >> $GITHUB_OUTPUT
+          echo "coding.lsrules was updated"
+        fi
+        
+    - name: Commit and push if changed
+      # Only push on direct pushes to a branch. `pull_request` checkouts are
+      # a detached-HEAD merge ref with no branch to push to, and forked PRs
+      # can't write through the default token anyway.
+      if: github.event_name == 'push' && steps.check-changes.outputs.changes == 'true'
+      run: |
+        git config --global user.name 'GitHub Action'
+        git config --global user.email 'action@github.com'
+        git add generated/coding.lsrules
+        git commit -m "chore: regenerate coding.lsrules [skip ci]"
+        git push
+        
+    - name: Upload coding.lsrules as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: coding-lsrules
+        path: generated/coding.lsrules
+        retention-days: 7
