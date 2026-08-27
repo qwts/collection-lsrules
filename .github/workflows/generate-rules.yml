@@ -30,7 +30,6 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '20'
-        cache: 'npm'
         
     - name: Generate coding.lsrules
       run: |
@@ -48,7 +47,10 @@ jobs:
         fi
         
     - name: Commit and push if changed
-      if: steps.check-changes.outputs.changes == 'true'
+      # Only push on direct pushes to a branch. `pull_request` checkouts are
+      # a detached-HEAD merge ref with no branch to push to, and forked PRs
+      # can't write through the default token anyway.
+      if: github.event_name == 'push' && steps.check-changes.outputs.changes == 'true'
       run: |
         git config --global user.name 'GitHub Action'
         git config --global user.email 'action@github.com'

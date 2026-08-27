@@ -17,11 +17,11 @@
 5. **Kiro** - `/Applications/Kiro.app/Contents/MacOS/Electron`
 
 **CLI Tools (5):**
-6. **Muse CLI** - `/Users/user/.local/bin/Muse`
-7. **OpenCode CLI** - `/Users/user/.opencode/bin/opencode`
-8. **Claude CLI** - `/Users/user/.local/bin/claude`
-9. **Devin CLI** - `/Users/user/.local/bin/devin`
-10. **Codex CLI** - `/Users/user/.local/bin/codex`
+6. **Muse CLI** - `~/.local/bin/Muse`
+7. **OpenCode CLI** - `~/.opencode/bin/opencode`
+8. **Claude CLI** - `~/.local/bin/claude`
+9. **Devin CLI** - `~/.local/bin/devin`
+10. **Codex CLI** - `~/.local/bin/codex`
 
 ### **🚀 Ready to Use**
 ```

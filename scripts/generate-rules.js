@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const fs = require('fs');
+const os = require('os');
 const path = require('path');
 
 /**
@@ -8,16 +9,33 @@ const path = require('path');
  * Crosses paths.json with remotes.json to produce coding.lsrules
  */
 
+// Little Snitch matches processes by their literal filesystem path, it does
+// not expand "~". Config entries may use "~" as a portable placeholder for
+// the current user's home directory (e.g. CLI tools installed under
+// ~/.local/bin), and we expand it here to the real path of whoever runs the
+// generator, so the emitted rules work on their machine.
+function expandHome(processPath) {
+  if (typeof processPath === 'string' && processPath.startsWith('~')) {
+    return path.join(os.homedir(), processPath.slice(1));
+  }
+  return processPath;
+}
+
 function generateRules() {
   try {
     // Read configuration files
-    const pathsData = JSON.parse(fs.readFileSync('config/paths.json', 'utf8'));
+    const pathsData = JSON.parse(fs.readFileSync('config/paths.json', 'utf8'))
+      .map(entry => ({ ...entry, process: expandHome(entry.process) }));
     const remotesData = JSON.parse(fs.readFileSync('config/remotes.json', 'utf8'));
     
-    // Extract all remote destinations (domains + hosts)
+    // Extract all remote destinations, tagging each with its rule key so
+    // domains and hosts produce the correct "remote-domains"/"remote-hosts"
+    // field instead of being collapsed into remote-domains.
+    const domains = remotesData.domains || [];
+    const hosts = remotesData.hosts || [];
     const allRemotes = [
-      ...(remotesData.domains || []),
-      ...(remotesData.hosts || [])
+      ...domains.map(value => ({ value, key: 'remote-domains' })),
+      ...hosts.map(value => ({ value, key: 'remote-hosts' }))
     ];
     
     console.log(`Loaded ${pathsData.length} paths and ${allRemotes.length} remote destinations`);
@@ -36,10 +54,10 @@ function generateRules() {
           priority: "regular",
           process: pathEntry.process,
           owner: "any",
-          "remote-domains": remote,
+          [remote.key]: remote.value,
           ports: "443",
           protocol: "any",
-          notes: `Generated rule for ${pathEntry.displayName} to connect to ${remote}`,
+          notes: `Generated rule for ${pathEntry.displayName} to connect to ${remote.value}`,
           action: "allow",
           direction: "outgoing"
         };

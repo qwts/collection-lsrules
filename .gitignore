@@ -19,7 +19,9 @@ ehthumbs.db
 Thumbs.db
 
 # IDE
-.vscode/
+# Note: .vscode/ is intentionally NOT ignored here. This project ships
+# shared tasks.json, settings.json, and launch.json that the docs
+# (docs/HOW-TO-USE.md, docs/FORMATTER-GUIDE.md) rely on being committed.
 .idea/
 *.swp
 *.swo

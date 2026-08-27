@@ -32,31 +32,31 @@
   {
     "name": "muse-cli",
     "displayName": "Muse CLI",
-    "process": "/Users/user/.local/bin/Muse",
-    "description": "Muse command-line tool"
+    "process": "~/.local/bin/Muse",
+    "description": "Muse command-line tool. Replace ~ with your home directory if your Little Snitch version does not expand it."
   },
   {
     "name": "opencode-cli",
     "displayName": "OpenCode CLI",
-    "process": "/Users/user/.opencode/bin/opencode",
-    "description": "OpenCode command-line tool"
+    "process": "~/.opencode/bin/opencode",
+    "description": "OpenCode command-line tool. Replace ~ with your home directory if your Little Snitch version does not expand it."
   },
   {
     "name": "claude-cli",
     "displayName": "Claude CLI",
-    "process": "/Users/user/.local/bin/claude",
-    "description": "Claude command-line interface"
+    "process": "~/.local/bin/claude",
+    "description": "Claude command-line interface. Replace ~ with your home directory if your Little Snitch version does not expand it."
   },
   {
     "name": "devin-cli",
     "displayName": "Devin CLI",
-    "process": "/Users/user/.local/bin/devin",
-    "description": "Devin command-line interface"
+    "process": "~/.local/bin/devin",
+    "description": "Devin command-line interface. Replace ~ with your home directory if your Little Snitch version does not expand it."
   },
   {
     "name": "codex-cli",
     "displayName": "Codex CLI",
-    "process": "/Users/user/.local/bin/codex",
-    "description": "Codex command-line interface"
+    "process": "~/.local/bin/codex",
+    "description": "Codex command-line interface. Replace ~ with your home directory if your Little Snitch version does not expand it."
   }
 ]

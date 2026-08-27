@@ -15,12 +15,58 @@ const path = require('path');
  * cat raw-ls-output.txt | node scripts/format-remotes.js
  */
 
+function extractDomainsFromJSON(text) {
+  const domains = new Set();
+
+  let data;
+  try {
+    data = JSON.parse(text);
+  } catch (e) {
+    return null; // Not JSON, caller should fall back to plain-text parsing
+  }
+
+  // config/remotes.json shape: { domains: [...], hosts: [...] }
+  if (Array.isArray(data.domains)) {
+    for (const domain of data.domains) {
+      if (typeof domain === 'string' && domain.length > 0) {
+        domains.add(domain.trim());
+      }
+    }
+  }
+
+  // .lsrules shape: { rules: [ { "remote-domains": "..." | [...] }, ... ] }
+  if (Array.isArray(data.rules)) {
+    for (const rule of data.rules) {
+      const remoteDomains = rule && rule['remote-domains'];
+      if (typeof remoteDomains === 'string') {
+        domains.add(remoteDomains.trim());
+      } else if (Array.isArray(remoteDomains)) {
+        for (const domain of remoteDomains) {
+          if (typeof domain === 'string' && domain.length > 0) {
+            domains.add(domain.trim());
+          }
+        }
+      }
+    }
+  }
+
+  return Array.from(domains).sort();
+}
+
 function extractDomainsFromText(text) {
+  // Prefer structural JSON parsing for JSON inputs (config/remotes.json,
+  // .lsrules files). Only fall back to the plain-text regex parser for
+  // Little Snitch's plain-text export, which is not valid JSON.
+  const jsonDomains = extractDomainsFromJSON(text);
+  if (jsonDomains !== null) {
+    return jsonDomains;
+  }
+
   const domains = new Set();
   const lines = text.split('\n');
   
   for (const line of lines) {
-    // Look for "destination: domain " pattern
+    // Look for "destination: domain " pattern (Little Snitch plain-text export)
     if (line.includes('destination: domain')) {
       const match = line.match(/destination: domain\s+(\S+)/);
       if (match && match[1]) {
@@ -30,13 +76,6 @@ function extractDomainsFromText(text) {
         if (cleanDomain && cleanDomain.length > 0) {
           domains.add(cleanDomain);
         }
-      }
-    }
-    // Also look for "remote-domains: " pattern (from .lsrules files)
-    else if (line.includes('remote-domains:')) {
-      const match = line.match(/remote-domains:\s*["']?([^"'\s,]+)["']?/);
-      if (match && match[1]) {
-        domains.add(match[1].trim());
       }
     }
   }

@@ -1,0 +1,31 @@
+{
+  // Auto-format JSON files on save
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "vscode.json-language-features",
+  
+  // Enable JSON schema validation for our config files
+  "json.schemas": [
+    {
+      "fileMatch": ["config/paths.json"],
+      "url": "./schemas/paths-schema.json"
+    },
+    {
+      "fileMatch": ["config/remotes.json"],
+      "url": "./schemas/remotes-schema.json"
+    }
+  ],
+  
+  // Task configurations
+  "tasks.autoDetect": "off",
+  
+  // Explorer settings
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "package.json": "package-lock.json, yarn.lock",
+    "config/remotes.json": "remotes-*.json",
+    "config/paths.json": "paths-*.json"
+  },
+  
+  // Terminal settings
+  "terminal.integrated.defaultProfile.osx": "zsh"
+}
