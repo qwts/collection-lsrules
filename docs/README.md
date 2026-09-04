@@ -147,7 +147,7 @@ collection-lsrules/
 │   ├── paths.json               # 7 real apps (ChatGPT, Claude, Cursor, Devin, Kiro, Muse, OpenCode)
 │   └── remotes.json             # 82 domains (extracted from Little Snitch)
 ├── generated/                    # GENERATED OUTPUT
-│   └── coding.lsrules           # 574 rules (7×82) - subscribe to this!
+│   └── coding.lsrules           # 2,460 rules (30×82) - subscribe to this!
 ├── scripts/                     # TOOLS
 │   ├── generate-rules.js        # Main generator: npm run generate
 │   ├── format-remotes.js       # VS Code formatter: npm run format-remotes

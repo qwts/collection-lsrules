@@ -16,7 +16,8 @@ const path = require('path');
 // generator, so the emitted rules work on their machine.
 function expandHome(processPath) {
   if (typeof processPath === 'string' && processPath.startsWith('~')) {
-    return path.join(os.homedir(), processPath.slice(1));
+    const targetHome = process.env.LSRULES_HOME || os.homedir();
+    return path.join(targetHome, processPath.slice(1));
   }
   return processPath;
 }
@@ -27,6 +28,14 @@ function generateRules() {
     const pathsData = JSON.parse(fs.readFileSync('config/paths.json', 'utf8'))
       .map(entry => ({ ...entry, process: expandHome(entry.process) }));
     const remotesData = JSON.parse(fs.readFileSync('config/remotes.json', 'utf8'));
+
+    const duplicateNames = pathsData.filter((entry, index) =>
+      pathsData.findIndex(candidate => candidate.name === entry.name) !== index);
+    const duplicateProcesses = pathsData.filter((entry, index) =>
+      pathsData.findIndex(candidate => candidate.process === entry.process) !== index);
+    if (duplicateNames.length || duplicateProcesses.length) {
+      throw new Error('paths.json contains duplicate names or process paths');
+    }
     
     // Extract all remote destinations, tagging each with its rule key so
     // domains and hosts produce the correct "remote-domains"/"remote-hosts"

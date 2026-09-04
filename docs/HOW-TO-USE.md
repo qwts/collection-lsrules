@@ -34,10 +34,10 @@ GitHub Action will auto-generate new rules with all 82 domains for your new app.
 ```
 collection-lsrules/
 ├── config/                    # EDIT THESE
-│   ├── paths.json           # Your apps list (7 apps currently)
+│   ├── paths.json           # Supported harness process inventory
 │   └── remotes.json         # 82 domains (from your Little Snitch)
 ├── generated/                # AUTO-GENERATED
-│   └── coding.lsrules       # 574 rules (7×82) - subscribe to this!
+│   └── coding.lsrules       # 2,460 rules (30×82) - subscribe to this!
 ├── scripts/                  # TOOLS
 │   ├── generate-rules.js    # Main generator
 │   ├── format-remotes.js    # VS Code formatter
@@ -58,7 +58,7 @@ collection-lsrules/
 ### **Phase 1: Initial Setup (Done!)**
 ✅ **Paths configured:** 7 real apps from your Little Snitch rules  
 ✅ **Remotes configured:** 82 domains extracted and formatted  
-✅ **Rules generated:** 574 rules (7 apps × 82 domains)  
+✅ **Rules generated:** 2,460 rules (30 processes × 82 domains)
 ✅ **VS Code integration:** Formatter tasks ready
 
 ### **Phase 2: Adding More Apps**
@@ -93,22 +93,22 @@ collection-lsrules/
 
 ## 🔧 Current Configuration
 
-### **Apps (10 total):**
-**Desktop Apps (7):**
-1. **ChatGPT Desktop** - `/Applications/ChatGPT.app/Contents/MacOS/ChatGPT`
-2. **Claude Desktop** - `/Applications/Claude.app/Contents/MacOS/Claude`
-3. **Cursor** - `/Applications/Cursor.app/Contents/MacOS/Cursor`
-4. **Devin Desktop** - `/Applications/Devin.app/Contents/MacOS/Devin`
-5. **Kiro** - `/Applications/Kiro.app/Contents/MacOS/Electron`
+### **Supported harness processes (30 total):**
 
-**CLI Tools (5):**
-6. **Muse CLI** - `~/.local/bin/Muse`
-7. **OpenCode CLI** - `~/.opencode/bin/opencode`
-8. **Claude CLI** - `~/.local/bin/claude`
-9. **Devin CLI** - `~/.local/bin/devin`
-10. **Codex CLI** - `~/.local/bin/codex`
+The inventory includes Claude Code/Desktop, Codex CLI/Desktop, GitHub Copilot,
+Cursor, Devin CLI/Desktop, Muse, Google Antigravity CLI/Desktop/IDE, Cline,
+Factory Droid, Goose, Grok Build, Hermes, Kiro IDE and all Kiro CLI processes,
+OpenCode CLI/Desktop, Pi, Warp, Amp, and Aider.
 
-CLI paths use `~` for the current user's home directory. `npm run generate` expands it to your actual home directory automatically.
+DeepSeek, Qwen Code, and ZCode are intentionally excluded.
+
+CLI paths use `~` as a portable placeholder. `npm run generate` expands it to
+the current home directory. To generate rules for another local account, set
+`LSRULES_HOME`, for example:
+
+```bash
+LSRULES_HOME=/Users/user npm run generate
+```
 
 ### **Domains (82 total):**
 - Agent domains: `agentclientprotocol.com`, `anthropic.com`, `claude.ai`, etc.
@@ -118,7 +118,7 @@ CLI paths use `~` for the current user's home directory. `npm run generate` expa
 
 ### **Generated Output:**
 - **File:** `generated/coding.lsrules`
-- **Size:** ~272KB (820 rules)
+- **Rule count:** 2,460 rules (30 processes × 82 destinations)
 - **Format:** Standard Little Snitch `.lsrules` JSON
 - **Subscribe URL:** `https://[username].github.io/collection-lsrules/generated/coding.lsrules`
 
@@ -306,7 +306,7 @@ head -20 generated/coding.lsrules
 ## 🎉 Success Criteria Met
 
 ✅ **Edit `paths.json` with one new app** → Works  
-✅ **Regenerate `coding.lsrules`** → Works (574 rules)  
+✅ **Regenerate `coding.lsrules`** → Works (2,460 rules)
 ✅ **File has full remote set for new app** → Works (all 82 domains)  
 ✅ **Subscribe URL documented** → `https://[username].github.io/collection-lsrules/generated/coding.lsrules`
 

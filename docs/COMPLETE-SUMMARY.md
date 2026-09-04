@@ -3,25 +3,18 @@
 ## ✅ **What's Been Created (Fully Working)**
 
 ### **📊 Current Configuration**
-- **10 Apps** with real executable paths (7 desktop + 3 CLI tools)
+- **30 Processes** covering the active non-Chinese coding harness inventory
 - **82 Domains** extracted and formatted (from your paste)
-- **820 Rules** generated (10×82) - ready for subscription
-- **272KB File** `generated/coding.lsrules`
+- **2,460 Rules** generated (30×82) - ready for subscription
+- **Generated File** `generated/coding.lsrules`
 
-### **🔧 Apps Configured**
-**Desktop Apps (7):**
-1. **ChatGPT Desktop** - `/Applications/ChatGPT.app/Contents/MacOS/ChatGPT`
-2. **Claude Desktop** - `/Applications/Claude.app/Contents/MacOS/Claude`
-3. **Cursor** - `/Applications/Cursor.app/Contents/MacOS/Cursor`
-4. **Devin Desktop** - `/Applications/Devin.app/Contents/MacOS/Devin`
-5. **Kiro** - `/Applications/Kiro.app/Contents/MacOS/Electron`
+### **🔧 Harnesses Configured**
 
-**CLI Tools (5):**
-6. **Muse CLI** - `~/.local/bin/Muse`
-7. **OpenCode CLI** - `~/.opencode/bin/opencode`
-8. **Claude CLI** - `~/.local/bin/claude`
-9. **Devin CLI** - `~/.local/bin/devin`
-10. **Codex CLI** - `~/.local/bin/codex`
+Claude Code, Codex, Copilot, Cursor, Devin, Muse, Antigravity, Cline,
+Factory Droid, Goose, Grok Build, Hermes, Kiro, OpenCode, Pi, Warp, Amp,
+and Aider are represented by their desktop and/or CLI process paths.
+
+DeepSeek, Qwen Code, and ZCode are intentionally excluded.
 
 ### **🚀 Ready to Use**
 ```
@@ -36,14 +29,14 @@ Subscribe URL: https://[your-github-username].github.io/collection-lsrules/gener
 ### **Configuration (Edit These)**
 ```
 config/
-├── paths.json     # 7 apps with real executable paths
+├── paths.json     # 30 supported harness process paths
 └── remotes.json   # 82 domains extracted from your rules
 ```
 
 ### **Generated Output (Subscribe to This)**
 ```
 generated/
-└── coding.lsrules  # 574 rules, 191KB, auto-updated
+└── coding.lsrules  # 2,460 rules, auto-updated
 ```
 
 ### **Tools & Automation**
@@ -129,7 +122,7 @@ Little Snitch: Auto-updates via subscription URL
 ## ✅ **Success Criteria Met**
 
 1. ✅ **Edit `paths.json` with one new app** → Works  
-2. ✅ **Regenerate `coding.lsrules`** → Works (574 rules)  
+2. ✅ **Regenerate `coding.lsrules`** → Works (2,460 rules)
 3. ✅ **File has full remote set for new app** → Works (all 82 domains)  
 4. ✅ **Subscribe URL documented** → `https://[username].github.io/collection-lsrules/generated/coding.lsrules`
 
@@ -167,7 +160,7 @@ pbpaste | npm run merge-remotes
 ✅ **GitHub automation** - Auto-generates on config changes  
 ✅ **Subscription ready** - HTTPS URL for Little Snitch  
 ✅ **Documentation complete** - Three comprehensive guides  
-✅ **Tested & working** - 574 rules generated successfully  
+✅ **Tested & working** - 2,460 rules generated successfully
 
 ---
 
