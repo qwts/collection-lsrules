@@ -5,6 +5,8 @@
   "main": "generate-rules.js",
   "scripts": {
     "generate": "node scripts/generate-rules.js",
+    "generate:browsers": "node scripts/generate-rules.js browsers",
+    "generate:coding": "node scripts/generate-rules.js coding",
     "extract": "node scripts/generate-rules.js extract",
     "format-remotes": "node scripts/format-remotes.js --format",
     "extract-remotes": "node scripts/format-remotes.js --extract",
