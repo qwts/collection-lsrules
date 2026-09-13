@@ -2,6 +2,436 @@
   "description": "",
   "name": "Brave",
   "rules": [
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "ytimg.com",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "youtube.com",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "yastatic.net",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "yandex.ru",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "x.com",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "workos.com",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "vercel-storage.com",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "ua5v.com",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "twimg.com",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "stripe.com",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "strike.fox",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "startpage.com",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "sentry.io",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "qwant.com",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "openai.com",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "media-amazon.com",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "imgix.net",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "hcaptcha.com",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "gvt1.com",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "gstatic.com",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "grok.com",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "googlevideo.com",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "googleapis.com",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "google.com",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "githubusercontent.com",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "githubcopilot.com",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "foxweather.com",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "foxnews.com",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "foxbusiness.com",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "fox.com",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "fncstatic.com",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "ecosia.org",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "cursor.sh",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "cursor.com",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "cursor-cdn.com",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "claude.com",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "bravesoftware.com",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "brave-http-only.com",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "boltdns.net",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "bing.com",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "beyondwords.io",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "akamaihd.net",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
+      "owner": "any",
+      "remote-domains": "akamai.com",
+      "ports": "443",
+      "protocol": "any",
+      "action": "allow",
+      "direction": "outgoing"
+    },
      {
       "priority": "regular",
       "process": "identifier.KL8N8XSYF4/com.brave.Browser",
