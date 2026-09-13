@@ -1,0 +1,3187 @@
+{
+  "description": "Single source of truth for allowed destinations. Each entry names the lists that consume it; scripts/generate-rules.js renders every .lsrules output from this file.",
+  "domains": [
+    {
+      "value": "420magazine.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "aaplimg.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "accelerator.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "acxiom.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "aexp-static.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "affirm.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "agentclientprotocol.com",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "ahrefs.com",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "aider.chat",
+      "lists": [
+        "terminal"
+      ]
+    },
+    {
+      "value": "akadns.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "akamai.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "akamaihd.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "alcasset.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "algolia.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "algolianet.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "alibaba.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "alibabacloud.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "alicdn.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "aliyun.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "aliyuncs.com",
+      "lists": [
+        "terminal"
+      ]
+    },
+    {
+      "value": "amazon.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "amazon.dev",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "amazonaws.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "amazoncognito.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "americanexpress.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "ampcode.com",
+      "lists": [
+        "terminal"
+      ]
+    },
+    {
+      "value": "amzn.to",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "android.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "anker.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "anthropic.com",
+      "lists": [
+        "browsers",
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "antigravity.google",
+      "lists": [
+        "browsers",
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "api.aws",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "appcues.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "appdomain.cloud",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "applemediaservices.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "archive.org",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "arxiv.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "arxiv.org",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "asip.cloud",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "astral.sh",
+      "lists": [
+        "terminal"
+      ]
+    },
+    {
+      "value": "atlassian.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "auth0.com",
+      "lists": [
+        "browsers",
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "aweber.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "aws.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "aws.dev",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "awsglobalaccelerator.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "awsstatic.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "awswaf.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "awxcdn.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "azlyrics.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "azure.com",
+      "lists": [
+        "browsers",
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "azureedge.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "azureml.ms",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "b-cdn.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "b-msedge.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "bby.us",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "bbystatic.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "beehiiv.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "bestbuy.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "beyondwords.io",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "bing.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "bitdefender.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "bitdefender.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "blv.cloud",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "boltdns.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "bootstrapcdn.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "brave-http-only.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "brave.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "bravesoftware.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "brcdn.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "breitbart.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "brevo.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "brew.sh",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "bulkammo.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "cachefly.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "calendly.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "canarymail.io",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "cardlines.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "cdn-net.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "cdnst.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "cdpn.io",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "ceros.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "cf2.rackcdn.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "chargebee.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "chargebeestaticv2.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "chase.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "chasecdn.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "chat.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "chatgpt.com",
+      "lists": [
+        "browsers",
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "chexsystems.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "cigna.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "claude.ai",
+      "lists": [
+        "browsers",
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "claude.com",
+      "lists": [
+        "browsers",
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "claudemcpcontent.com",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "claudeusercontent.com",
+      "lists": [
+        "browsers",
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "cline.bot",
+      "lists": [
+        "terminal"
+      ]
+    },
+    {
+      "value": "cloud.microsoft",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "cloudflare.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "cloudflare.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "cloudflareinsights.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "cloudfront.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "cloudfront.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "cloudinary.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "cmcdn.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "cocl.us",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "codeium.com",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "codeiumdata.com",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "codepen.io",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "codepenassets.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "cognitiveclass.ai",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "conference-board.org",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "consumerfinance.gov",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "cookcountyclerkofcourt.org",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "cookielaw.org",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "coursera.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "coursera.org",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "crates.io",
+      "lists": [
+        "terminal"
+      ]
+    },
+    {
+      "value": "crunchbase.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "ctfassets.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "cultivatefox.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "cursor-cdn.com",
+      "lists": [
+        "browsers",
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "cursor.com",
+      "lists": [
+        "browsers",
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "cursor.sh",
+      "lists": [
+        "browsers",
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "cursorapi.com",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "cursorvm.com",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "datadoghq.com",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "datatables.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "datocms-assets.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "deepwiki.com",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "default.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "desmos.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "devin.ai",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "digicert.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "digitalocean.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "discogs.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "discover.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "discoverthreejs.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "dish-wireless.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "dnsleaktest.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "donorbox.org",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "dual-s-msedge.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "dubcdn.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "duckduckgo.com",
+      "lists": [
+        "browsers",
+        "terminal"
+      ]
+    },
+    {
+      "value": "e-msedge.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "ea.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "eclipsecontent.org",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "ecosia.org",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "enterpriseintegrationpatterns.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "eppo.cloud",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "esm.sh",
+      "lists": [
+        "browsers",
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "exa.ai",
+      "lists": [
+        "browsers",
+        "terminal"
+      ]
+    },
+    {
+      "value": "exactdn.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "exp-tas.com",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "experian.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "facebook.com",
+      "lists": [
+        "browsers",
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "factory.ai",
+      "lists": [
+        "terminal"
+      ]
+    },
+    {
+      "value": "fastpeopleearch.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "fastpeoplesearch.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "fb-t-msedge.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "fbcdn.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "fedex.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "figma.com",
+      "lists": [
+        "browsers",
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "files-text.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "filestackapi.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "flavedo.io",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "fledglinggame.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "fncstatic.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "fontawesome.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "fonts.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "forethought.ai",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "fox.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "foxbusiness.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "foxnews.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "foxweather.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "freshchat.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "froknowsphoto.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "frontier.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "frontiernet.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "futurecdn.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "geni.us",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "gettyimages.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "ggpht.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "github.com",
+      "lists": [
+        "browsers",
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "github.io",
+      "lists": [
+        "browsers",
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "githubassets.com",
+      "lists": [
+        "browsers",
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "githubcopilot.com",
+      "lists": [
+        "browsers",
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "githubusercontent.com",
+      "lists": [
+        "browsers",
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "gmail.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "golangdocs.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "google.com",
+      "lists": [
+        "browsers",
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "googleapis.com",
+      "lists": [
+        "browsers",
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "googlesyndication.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "googleusercontent.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "googlevideo.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "granola.ai",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "graphql.org",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "grok.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "grokipedia.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "grokusercontent.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "gstatic.com",
+      "lists": [
+        "browsers",
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "guitarcenter.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "guitarworld.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "gvt1.com",
+      "lists": [
+        "browsers",
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "hackaday.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "halfpricebooks.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "hcaptcha.com",
+      "lists": [
+        "browsers",
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "hereapi.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "herokudns.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "hexagon-cdn.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "hf.co",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "hhs.gov",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "highcharts.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "hivelocity.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "hobbycardlife.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "hosted-by-discourse.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "howareutoday.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "hpb.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "hscoscdn00.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "hsforms.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "hsforms.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "hubspot.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "hubspotonwebflow.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "huggingface.co",
+      "lists": [
+        "browsers",
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "hypothes.is",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "identityiq.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "idiolect.app",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "ifit.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "ifm.ai",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "iheart.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "imagedelivery.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "imdb.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "imgix.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "impactcdn.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "impervadns.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "incapdns.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "influxdata.com",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "instagram.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "intercom.help",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "intercom.io",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "intercomcdn.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "iojs.org",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "ipregistry.co",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "jakearchibald.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "jetboost.io",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "jpmchase.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "jquery.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "js.org",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "jsdelivr.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "jwpcdn.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "jwplatform.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "jwpsrv.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "kaggle.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "kaggleusercontent.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "kastatic.org",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "ketchcdn.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "khanacademy.org",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "kilo.ai",
+      "lists": [
+        "terminal"
+      ]
+    },
+    {
+      "value": "kiro.dev",
+      "lists": [
+        "browsers",
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "knotch-cdn.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "kproxy.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "kroger.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "kxcdn.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "launchdarkly.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "launchpadcontent.net",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "letsbot.net",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "libretexts.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "libretexts.org",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "libsyn.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "licdn.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "lightboxcdn.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "linear.app",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "linkedin.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "list-manage.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "live-video.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "live.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "livechat-files.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "livechatinc.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "lnkd.in",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "locofy.ai",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "lottie.host",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "lovable.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "lovable.dev",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "loveable.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "macarne.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "macrumors.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "macworld.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "mailchimp.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "marilynmanson.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "marl.org",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "mastra.ai",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "mdnplay.dev",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "media-amazon.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "media-imdb.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "medium.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "medlineplus.gov",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "mend.io",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "meta.ai",
+      "lists": [
+        "browsers",
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "meta.com",
+      "lists": [
+        "browsers",
+        "terminal"
+      ]
+    },
+    {
+      "value": "metronetinc.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "microcenter.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "microsoft.com",
+      "lists": [
+        "browsers",
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "microsoftonline.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "mintlify.app",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "mmapiws.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "mojoauth.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "movietradingcompany.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "mozgcp.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "mozilla.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "msauth.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "msftauth.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "msftauthimages.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "msn.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "mtstatic.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "mymind.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "myq.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "myshopify.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "newdebuggingbook.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "newegg.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "neweggimages.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "newosxbook.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "nitelusa.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "nmax.tv",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "nodejs.org",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "nodesource.com",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "nofraud.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "noticeable.io",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "notion.so",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "npmjs.org",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "nvidia.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "nvidia.partners",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "nwsmx.us",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "nypost.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "oaistatic.com",
+      "lists": [
+        "browsers",
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "oaistatsig.com",
+      "lists": [
+        "browsers",
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "oaiusercontent.com",
+      "lists": [
+        "browsers",
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "office.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "office.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "office365.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "omegacdn.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "ondigitalocean.app",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "onelink-edge.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "onetrust.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "ooklaserver.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "open-vsx.org",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "openai.com",
+      "lists": [
+        "browsers",
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "opencode.ai",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "openrouter.ai",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "optable.co",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "optidigital.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "optimizely.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "osxdaily.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "outlook.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "parallel.ai",
+      "lists": [
+        "terminal"
+      ]
+    },
+    {
+      "value": "paypal.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "paypalobjects.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "perplexity.ai",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "pikalabs.org",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "plainenglish.io",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "playwright.dev",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "poetryfoundation.org",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "positional-bucket.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "pplx.ai",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "preezie.io",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "pricecharting.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "primis.tech",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "prnewswire.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "producthunt.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "protechts.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "proton.me",
+      "lists": [
+        "browsers",
+        "terminal"
+      ]
+    },
+    {
+      "value": "protondownload.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "protonvpn.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "protonweb.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "pscp.tv",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "pusher.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "px-cloud.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "pypi.org",
+      "lists": [
+        "browsers",
+        "terminal"
+      ]
+    },
+    {
+      "value": "python-guide.org",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "python.org",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "pythonhosted.org",
+      "lists": [
+        "terminal"
+      ]
+    },
+    {
+      "value": "quad9.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "qwant.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "qwencloud.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "rakuten.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "ravenjs.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "rawgit.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "realpython.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "recaptcha.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "redd.it",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "reddit.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "redditmedia.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "redditstatic.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "run.app",
+      "lists": [
+        "browsers",
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "rust-lang.org",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "rustup.rs",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "s-msedge.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "salesforce.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "scienceconnect.io",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "self.inc",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "sentry.io",
+      "lists": [
+        "browsers",
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "shopgoodwill.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "shopify.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "sigmacdn.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "sitepoint.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "skills.network",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "slack.com",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "slack.dev",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "slater.app",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "smartystreets.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "snapcraft.io",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "snapcraftcontent.com",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "softlayer.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "sora.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "spectrumvoip.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "speedtest.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "spline.design",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "sportscardspro.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "sqlite.org",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "startpage.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "static.microsoft",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "strike.fox",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "stripe.com",
+      "lists": [
+        "browsers",
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "stripe.network",
+      "lists": [
+        "browsers",
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "stripecdn.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "syfpayments.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "t-msedge.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "t.co",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "tailwindcss.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "taobao.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "tensorflow.org",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "tesa.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "threads.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "thundercompute.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "toontrack.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "topaz-labs.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "toroexofe.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "torproject.org",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "toyota.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "trafficmanager.net",
+      "lists": [
+        "browsers",
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "transtelco.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "trib.al",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "tripadvisor.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "trustwave.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "trygravity.ai",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "tuckercarlson.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "twimg.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "twitter.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "typekit.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "ua5v.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "ubuntu.com",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "udemy.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "udemycdn.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "ui.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "ultimate-guitar.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "understandinglinearalgebra.org",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "unpkg.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "unt.edu",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "untsystem.edu",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "upsiloncdn.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "uptick.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "usdphosting.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "uservoice.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "vaperoyalty.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "vector.co",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "vellum.ai",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "vercel-dns.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "vercel-storage.com",
+      "lists": [
+        "browsers",
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "vercel.app",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "vercel.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "verizon.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "vintagestock.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "visualstudio.com",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "vscode-cdn.net",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "vscode.dev",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "walmart.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "walmartimages.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "we-stats.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "weather.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "website-files.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "wikimedia.org",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "wikipedia.org",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "wiley.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "windows.net",
+      "lists": [
+        "browsers",
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "windstream.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "windsurf.com",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "withgoogle.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "wolfbox.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "wordpress.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "workos.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "wowscale.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "wpeproxy.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "x.ai",
+      "lists": [
+        "browsers",
+        "terminal"
+      ]
+    },
+    {
+      "value": "x.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "xicdn.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "xx.fbcdn.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "yahoo.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "yandex.ru",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "yarnpkg.com",
+      "lists": [
+        "coding",
+        "terminal"
+      ]
+    },
+    {
+      "value": "yastatic.net",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "yelp.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "yelpcdn.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "yimg.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "yottaa.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "youtube.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "ytimg.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "z.ai",
+      "lists": [
+        "terminal"
+      ]
+    },
+    {
+      "value": "zdassets.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "zendesk.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "zoominfo.com",
+      "lists": [
+        "browsers"
+      ]
+    },
+    {
+      "value": "zopim.com",
+      "lists": [
+        "browsers"
+      ]
+    }
+  ],
+  "hosts": []
+}

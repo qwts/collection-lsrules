@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Little Snitch Domain Registry",
+  "description": "Single source of truth for allowed destinations. Each entry names the lists that consume it.",
+  "type": "object",
+  "properties": {
+    "description": { "type": "string" },
+    "domains": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": { "type": "string" },
+          "lists": {
+            "type": "array",
+            "items": { "enum": ["coding", "browsers", "terminal"] },
+            "minItems": 1
+          }
+        },
+        "required": ["value", "lists"]
+      }
+    },
+    "hosts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": { "type": "string" },
+          "lists": {
+            "type": "array",
+            "items": { "enum": ["coding", "browsers", "terminal"] },
+            "minItems": 1
+          }
+        },
+        "required": ["value", "lists"]
+      }
+    }
+  },
+  "required": ["domains"]
+}

@@ -7,11 +7,13 @@
     "generate": "node scripts/generate-rules.js",
     "generate:browsers": "node scripts/generate-rules.js browsers",
     "generate:coding": "node scripts/generate-rules.js coding",
+    "generate:terminal": "node scripts/generate-rules.js terminal",
+    "check": "node scripts/generate-rules.js --check",
     "extract": "node scripts/generate-rules.js extract",
     "format-remotes": "node scripts/format-remotes.js --format",
     "extract-remotes": "node scripts/format-remotes.js --extract",
     "merge-remotes": "node scripts/format-remotes.js --merge",
-    "test": "echo \"No tests specified\" && exit 0"
+    "test": "node scripts/generate-rules.js --check"
   },
   "keywords": [
     "little-snitch",

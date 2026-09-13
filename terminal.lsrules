@@ -1,0 +1,996 @@
+{
+  "description": "Allow outgoing connections from Terminal.app to development tooling and the coding agents harness destinations.",
+  "name": "Terminal",
+  "rules": [
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "agentclientprotocol.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "ahrefs.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "aider.chat",
+      "protocol": "any",
+      "notes": "Allowed via Little Snitch connection alert; synced from local model export.",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "aliyuncs.com",
+      "protocol": "any",
+      "notes": "Allowed via Little Snitch connection alert; synced from local model export.",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "ampcode.com",
+      "protocol": "any",
+      "notes": "Allowed via Little Snitch connection alert; synced from local model export.",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "anthropic.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "antigravity.google",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "astral.sh",
+      "protocol": "any",
+      "notes": "Allowed via Little Snitch connection alert; synced from local model export.",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "auth0.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "azure.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "azureml.ms",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "brew.sh",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "chatgpt.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "claude.ai",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "claude.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "claudemcpcontent.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "claudeusercontent.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "cline.bot",
+      "protocol": "any",
+      "notes": "Allowed via Little Snitch connection alert; synced from local model export.",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "codeium.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "codeiumdata.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "crates.io",
+      "protocol": "any",
+      "notes": "Allowed via Little Snitch connection alert; synced from local model export.",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "cursor-cdn.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "cursor.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "cursor.sh",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "cursorapi.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "cursorvm.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "datadoghq.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "deepwiki.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "devin.ai",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "duckduckgo.com",
+      "protocol": "any",
+      "notes": "Allowed via Little Snitch connection alert; synced from local model export.",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "eclipsecontent.org",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "esm.sh",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "exa.ai",
+      "protocol": "any",
+      "notes": "Allowed via Little Snitch connection alert; synced from local model export.",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "exp-tas.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "facebook.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "factory.ai",
+      "protocol": "any",
+      "notes": "Allowed via Little Snitch connection alert; synced from local model export.",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "figma.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "github.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "github.io",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "githubassets.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "githubcopilot.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "githubusercontent.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "google.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "googleapis.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "granola.ai",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "gstatic.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "gvt1.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "hcaptcha.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "huggingface.co",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "idiolect.app",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "influxdata.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "iojs.org",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "js.org",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "kilo.ai",
+      "protocol": "any",
+      "notes": "Allowed via Little Snitch connection alert; synced from local model export.",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "kiro.dev",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "launchpadcontent.net",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "letsbot.net",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "linear.app",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "locofy.ai",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "meta.ai",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "meta.com",
+      "protocol": "any",
+      "notes": "Allowed via Little Snitch connection alert; synced from local model export.",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "microsoft.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "nodejs.org",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "nodesource.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "notion.so",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "npmjs.org",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "oaistatic.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "oaistatsig.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "oaiusercontent.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "open-vsx.org",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "openai.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "opencode.ai",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "openrouter.ai",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "parallel.ai",
+      "protocol": "any",
+      "notes": "Allowed via Little Snitch connection alert; synced from local model export.",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "playwright.dev",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "proton.me",
+      "protocol": "any",
+      "notes": "Allowed via Little Snitch connection alert; synced from local model export.",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "pypi.org",
+      "protocol": "any",
+      "notes": "Allowed via Little Snitch connection alert; synced from local model export.",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "pythonhosted.org",
+      "protocol": "any",
+      "notes": "Allowed via Little Snitch connection alert; synced from local model export.",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "run.app",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "rust-lang.org",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "rustup.rs",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "sentry.io",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "slack.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "slack.dev",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "snapcraft.io",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "snapcraftcontent.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "sqlite.org",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "stripe.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "stripe.network",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "trafficmanager.net",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "ubuntu.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "vercel-storage.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "visualstudio.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "vscode-cdn.net",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "windows.net",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "windsurf.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "x.ai",
+      "protocol": "any",
+      "notes": "Allowed via Little Snitch connection alert; synced from local model export.",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "yarnpkg.com",
+      "protocol": "any",
+      "notes": "Shared with the coding agents harness (config/domains.json).",
+      "action": "allow",
+      "direction": "outgoing"
+    },
+    {
+      "priority": "regular",
+      "process": "identifier.APPLE/com.apple.Terminal",
+      "owner": "any",
+      "remote-domains": "z.ai",
+      "protocol": "any",
+      "notes": "Allowed via Little Snitch connection alert; synced from local model export.",
+      "action": "allow",
+      "direction": "outgoing"
+    }
+  ]
+}
