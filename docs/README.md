@@ -19,9 +19,14 @@ The generator crosses every path with every remote to produce `coding.lsrules` -
 - **VS Code integration:** Formatter tasks ready
 
 ### **1. Subscribe in Little Snitch:**
-```
-https://[your-github-username].github.io/collection-lsrules/generated/coding.lsrules
-```
+- **Coding Agents:**
+  ```
+  https://[your-github-username].github.io/collection-lsrules/generated/coding.lsrules
+  ```
+- **Browsers (Brave, Chrome, Firefox, Safari):**
+  ```
+  https://[your-github-username].github.io/collection-lsrules/generated/browsers.lsrules
+  ```
 *(Replace `[your-github-username]` with your GitHub username)*
 
 ### **2. Add New App:**
@@ -103,7 +108,9 @@ Copy Little Snitch output → `Cmd+Shift+P` → "Merge Domains from Clipboard"
 
 ### Manual Generation
 ```bash
-npm run generate           # Generate coding.lsrules
+npm run generate           # Generate both coding.lsrules and browsers.lsrules
+npm run generate:browsers  # Generate browsers.lsrules
+npm run generate:coding    # Generate coding.lsrules
 npm run extract -- file.lsrules  # Extract remotes from existing file
 ```
 
@@ -114,14 +121,21 @@ npm run extract -- file.lsrules  # Extract remotes from existing file
 - Private Pages sites are only accessible to repository collaborators
 - If you don't have the required plan, use local file subscription
 
-**Subscribe URL:**
-```
-https://[your-github-username].github.io/collection-lsrules/generated/coding.lsrules
-```
+**Subscribe URLs:**
+- Coding Agents:
+  ```
+  https://[your-github-username].github.io/collection-lsrules/generated/coding.lsrules
+  ```
+- Browsers:
+  ```
+  https://[your-github-username].github.io/collection-lsrules/generated/browsers.lsrules
+  ```
 
 **Alternative local subscription:**
 1. Clone repo locally
-2. Point Little Snitch to: `file:///path/to/collection-lsrules/generated/coding.lsrules`
+2. Point Little Snitch to:
+   - `file:///path/to/collection-lsrules/generated/coding.lsrules`
+   - `file:///path/to/collection-lsrules/generated/browsers.lsrules`
 3. Regenerate when configs change
 
 ## Adding a New Binary
@@ -147,7 +161,8 @@ collection-lsrules/
 │   ├── paths.json               # 7 real apps (ChatGPT, Claude, Cursor, Devin, Kiro, Muse, OpenCode)
 │   └── remotes.json             # 82 domains (extracted from Little Snitch)
 ├── generated/                    # GENERATED OUTPUT
-│   └── coding.lsrules           # 2,460 rules (30×82) - subscribe to this!
+│   ├── coding.lsrules           # 2,460 rules (30×82) - subscribe to this!
+│   └── browsers.lsrules         # 1,148 rules (4×287) - subscribe to this!
 ├── scripts/                     # TOOLS
 │   ├── generate-rules.js        # Main generator: npm run generate
 │   ├── format-remotes.js       # VS Code formatter: npm run format-remotes
