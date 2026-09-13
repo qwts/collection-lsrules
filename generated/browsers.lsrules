@@ -72,17 +72,6 @@
       "priority": "regular",
       "process": "identifier.KL8N8XSYF4/com.brave.Browser",
       "owner": "any",
-      "remote-domains": "adtrafficquality.google",
-      "ports": "443",
-      "protocol": "any",
-      "notes": "Generated rule for Brave Browser to connect to adtrafficquality.google",
-      "action": "allow",
-      "direction": "outgoing"
-    },
-    {
-      "priority": "regular",
-      "process": "identifier.KL8N8XSYF4/com.brave.Browser",
-      "owner": "any",
       "remote-domains": "aexp-static.com",
       "ports": "443",
       "protocol": "any",
@@ -5180,17 +5169,6 @@
       "ports": "443",
       "protocol": "any",
       "notes": "Generated rule for Google Chrome to connect to adobedtm.com",
-      "action": "allow",
-      "direction": "outgoing"
-    },
-    {
-      "priority": "regular",
-      "process": "identifier.EQHXZ8M8AV/com.google.Chrome",
-      "owner": "any",
-      "remote-domains": "adtrafficquality.google",
-      "ports": "443",
-      "protocol": "any",
-      "notes": "Generated rule for Google Chrome to connect to adtrafficquality.google",
       "action": "allow",
       "direction": "outgoing"
     },
@@ -10302,17 +10280,6 @@
       "priority": "regular",
       "process": "identifier.2GN67GQWCV/org.mozilla.firefox",
       "owner": "any",
-      "remote-domains": "adtrafficquality.google",
-      "ports": "443",
-      "protocol": "any",
-      "notes": "Generated rule for Firefox to connect to adtrafficquality.google",
-      "action": "allow",
-      "direction": "outgoing"
-    },
-    {
-      "priority": "regular",
-      "process": "identifier.2GN67GQWCV/org.mozilla.firefox",
-      "owner": "any",
       "remote-domains": "aexp-static.com",
       "ports": "443",
       "protocol": "any",
@@ -15410,17 +15377,6 @@
       "ports": "443",
       "protocol": "any",
       "notes": "Generated rule for Safari to connect to adobedtm.com",
-      "action": "allow",
-      "direction": "outgoing"
-    },
-    {
-      "priority": "regular",
-      "process": "/Applications/Safari.app/Contents/MacOS/Safari",
-      "owner": "any",
-      "remote-domains": "adtrafficquality.google",
-      "ports": "443",
-      "protocol": "any",
-      "notes": "Generated rule for Safari to connect to adtrafficquality.google",
       "action": "allow",
       "direction": "outgoing"
     },

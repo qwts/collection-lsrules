@@ -1733,17 +1733,6 @@
       "priority": "regular",
       "process": "/applications/safari.app/contents/macos/safari",
       "owner": "any",
-      "remote-domains": "adtrafficquality.google",
-      "ports": "443",
-      "protocol": "any",
-      "notes": "Allowed via Little Snitch connection alert; synced from local model export.",
-      "action": "allow",
-      "direction": "outgoing"
-    },
-    {
-      "priority": "regular",
-      "process": "/applications/safari.app/contents/macos/safari",
-      "owner": "any",
       "remote-domains": "adobedtm.com",
       "ports": "443",
       "protocol": "any",
