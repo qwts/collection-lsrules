@@ -35,12 +35,12 @@ GitHub Action will auto-generate new rules with all 82 domains for your new app.
 collection-lsrules/
 ├── config/                    # EDIT THESE
 │   ├── paths.json           # Supported harness process inventory
-│   └── remotes.json         # 82 domains (from your Little Snitch)
+│   └── domains.json         # Tagged destination registry (coding/browsers/terminal)
 ├── generated/                # AUTO-GENERATED
 │   └── coding.lsrules       # 2,460 rules (30×82) - subscribe to this!
 ├── scripts/                  # TOOLS
 │   ├── generate-rules.js    # Main generator
-│   ├── format-remotes.js    # VS Code formatter
+│   ├── format-remotes.js    # Registry formatter/merger
 │   └── workflow-demo.sh     # Quick demo
 ├── docs/                    # GUIDES
 │   ├── README.md           # Main documentation
@@ -86,8 +86,8 @@ collection-lsrules/
 ### **Phase 3: Adding More Domains**
 1. **Copy Little Snitch output** to clipboard
 2. **Run VS Code task:** `Cmd+Shift+P` → "Tasks: Run Task" → "Merge Domains from Clipboard"
-3. **Or terminal:** `pbpaste | npm run merge-remotes`
-4. **Commit changes** → Rules auto-update
+3. **Or terminal:** `pbpaste | npm run merge-remotes` (tags new domains `coding`; add `-- --lists browsers,terminal` for other outputs)
+4. **Regenerate:** `npm run generate`, then commit registry and outputs together (`npm test` guards against stale outputs)
 
 ---
 
@@ -103,12 +103,15 @@ OpenCode CLI/Desktop, Pi, Warp, Amp, and Aider.
 DeepSeek, Qwen Code, and ZCode are intentionally excluded.
 
 CLI paths use `~` as a portable placeholder. `npm run generate` expands it to
-the current home directory. To generate rules for another local account, set
-`LSRULES_HOME`, for example:
+the publish placeholder `/Users/user` so real home directories never land in
+the committed outputs. To generate machine-local rules, set `LSRULES_HOME`:
 
 ```bash
-LSRULES_HOME=/Users/user npm run generate
+LSRULES_HOME=$HOME npm run generate
 ```
+
+`npm test` always compares against placeholder output, so it stays green
+with `LSRULES_HOME` set.
 
 ### **Domains (82 total):**
 - Agent domains: `agentclientprotocol.com`, `anthropic.com`, `claude.ai`, etc.
@@ -127,7 +130,7 @@ LSRULES_HOME=/Users/user npm run generate
 ## 🚀 VS Code Integration
 
 ### **Available Tasks (`Cmd+Shift+P` → "Tasks: Run Task"):**
-1. **Format Remotes JSON** - Clean up `config/remotes.json`
+1. **Format Domain Registry** - Sort and de-duplicate `config/domains.json`
 2. **Extract Domains from Clipboard** - Paste & format Little Snitch output
 3. **Merge Domains from Clipboard** - Add new domains to existing config
 
@@ -165,11 +168,14 @@ git push
 # Method 1: VS Code task
 # Copy Little Snitch output, then run "Merge Domains from Clipboard"
 
-# Method 2: Terminal
+# Method 2: Terminal (new domains are tagged "coding" by default)
 pbpaste | npm run merge-remotes
 
-# Method 3: From file
-cat new-rules.txt | npm run merge-remotes
+# Method 3: From file, tagging for other outputs
+npm run merge-remotes -- new-rules.txt --lists browsers,terminal
+
+# Then regenerate the outputs
+npm run generate
 ```
 
 ### **Regenerate Rules:**
@@ -194,17 +200,18 @@ npm run extract -- chrome.lsrules
 ## 🔄 GitHub Automation
 
 ### **Auto-Generation Workflow:**
-1. **You edit** `config/paths.json` or `config/remotes.json`
+1. **You edit** `config/paths.json` or `config/domains.json`
 2. **You commit & push** to `main` branch
 3. **GitHub Action runs** automatically
-4. **Action generates** new `coding.lsrules`
-5. **Action commits** updated file back to repo
+4. **Action generates** new `coding.lsrules`, `browsers.lsrules` and `terminal.lsrules`
+5. **Action commits** updated files back to repo
 6. **Little Snitch auto-updates** via subscription
 
 ### **Workflow File:** `.github/workflows/generate-rules.yml`
-- Triggers on: `paths.json` or `remotes.json` changes
+- Triggers on: `paths.json`, `domains.json`, `blocked.lsrules` or generator changes
 - Runs on: Ubuntu latest
-- Output: Commits `generated/coding.lsrules`
+- Pull requests: runs `npm test` (fails on stale outputs or blocked-list contradictions)
+- Output: Commits `generated/coding.lsrules`, `generated/browsers.lsrules`, `terminal.lsrules`
 
 ---
 
@@ -271,7 +278,7 @@ head -20 generated/coding.lsrules
 - Try local file: `file:///path/to/collection-lsrules/generated/coding.lsrules`
 
 ### **No rules generated:**
-- Check `config/remotes.json` has domains array
+- Check `config/domains.json` has entries tagged `coding`
 - Check `config/paths.json` has valid process paths
 - Run `npm run generate` manually
 
@@ -291,7 +298,7 @@ head -20 generated/coding.lsrules
 
 ### **File Updates:**
 - **Edit apps:** `config/paths.json`
-- **Edit domains:** `config/remotes.json`
+- **Edit domains:** `config/domains.json`
 - **Generator logic:** `scripts/generate-rules.js`
 - **Formatter logic:** `scripts/format-remotes.js`
 

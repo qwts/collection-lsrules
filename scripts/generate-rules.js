@@ -6,8 +6,13 @@ const path = require('path');
 
 /**
  * Little Snitch Rule Generator
- * - Generates coding.lsrules from config/paths.json and config/remotes.json
- * - Generates browsers.lsrules from individual browser .lsrules files
+ * - Generates coding.lsrules from config/paths.json and config/domains.json
+ * - Generates browsers.lsrules from config/domains.json
+ * - Generates terminal.lsrules from config/domains.json
+ *
+ * config/domains.json is the single source of truth for allowed
+ * destinations: each entry names the lists ("coding", "browsers",
+ * "terminal") that consume it.
  */
 
 const BROWSER_TARGETS = [
@@ -42,20 +47,74 @@ const BROWSER_TARGETS = [
 // the current user's home directory (e.g. CLI tools installed under
 // ~/.local/bin), and we expand it here to the real path of whoever runs the
 // generator, so the emitted rules work on their machine.
-function expandHome(processPath) {
+// Home directory baked into the committed outputs. A plain `npm run generate`
+// uses this placeholder so a real local home directory can never leak into
+// the public repo; set LSRULES_HOME=$HOME explicitly for machine-local output.
+const PLACEHOLDER_HOME = '/Users/user';
+
+function defaultHome() {
+  return process.env.LSRULES_HOME || PLACEHOLDER_HOME;
+}
+
+function expandHome(processPath, targetHome = defaultHome()) {
   if (typeof processPath === 'string' && processPath.startsWith('~')) {
-    const targetHome = process.env.LSRULES_HOME || os.homedir();
     return path.join(targetHome, processPath.slice(1));
   }
   return processPath;
 }
 
-function generateCodingRules() {
+// Single source of truth for allowed destinations. config/domains.json holds
+// one entry per domain/host with a `lists` array naming the outputs that
+// consume it ("coding", "browsers", "terminal").
+function loadRegistry(registryPath = 'config/domains.json') {
+  const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
+  return {
+    domains: registry.domains || [],
+    hosts: registry.hosts || [],
+  };
+}
+
+function registryValues(entries, tag) {
+  return entries
+    .filter((entry) => (entry.lists || []).includes(tag))
+    .map((entry) => entry.value);
+}
+
+// Fail closed: no allowed destination may also be denied in blocked.lsrules.
+function checkBlockedContradictions(
+  registry,
+  blockedPath = 'blocked.lsrules'
+) {
+  const blocked = JSON.parse(fs.readFileSync(blockedPath, 'utf8'));
+  const denied = new Set();
+  for (const rule of blocked.rules || []) {
+    for (const key of ['remote-domains', 'remote-hosts']) {
+      if (rule[key]) {
+        denied.add(rule[key]);
+      }
+    }
+  }
+  const allowed = [...registry.domains, ...registry.hosts]
+    .map((entry) => entry.value);
+  const conflicts = [...new Set(allowed.filter((value) => denied.has(value)))].sort();
+  if (conflicts.length > 0) {
+    throw new Error(
+      `Allowed destinations also denied in ${blockedPath}: ${conflicts.join(', ')}`
+    );
+  }
+}
+
+function generateCodingRules(options = {}) {
+  const {
+    outputPath = 'generated/coding.lsrules',
+    home = defaultHome(),
+  } = options;
+
   try {
     // Read configuration files
     const pathsData = JSON.parse(fs.readFileSync('config/paths.json', 'utf8'))
-      .map(entry => ({ ...entry, process: expandHome(entry.process) }));
-    const remotesData = JSON.parse(fs.readFileSync('config/remotes.json', 'utf8'));
+      .map(entry => ({ ...entry, process: expandHome(entry.process, home) }));
+    const registry = loadRegistry();
 
     const duplicateNames = pathsData.filter((entry, index) =>
       pathsData.findIndex(candidate => candidate.name === entry.name) !== index);
@@ -68,8 +127,8 @@ function generateCodingRules() {
     // Extract all remote destinations, tagging each with its rule key so
     // domains and hosts produce the correct "remote-domains"/"remote-hosts"
     // field instead of being collapsed into remote-domains.
-    const domains = remotesData.domains || [];
-    const hosts = remotesData.hosts || [];
+    const domains = registryValues(registry.domains, 'coding');
+    const hosts = registryValues(registry.hosts, 'coding');
     const allRemotes = [
       ...domains.map(value => ({ value, key: 'remote-domains' })),
       ...hosts.map(value => ({ value, key: 'remote-hosts' }))
@@ -78,8 +137,8 @@ function generateCodingRules() {
     console.log(`[Coding] Loaded ${pathsData.length} paths and ${allRemotes.length} remote destinations`);
     
     if (allRemotes.length === 0) {
-      console.warn('Warning: No remote destinations found in remotes.json');
-      console.warn('Add domains or hosts to remotes.json and run again');
+      console.warn('Warning: No destinations tagged "coding" found in config/domains.json');
+      console.warn('Add "coding" to the lists of the domains or hosts to allow and run again');
     }
     
     // Generate rules by crossing paths with remotes
@@ -106,7 +165,7 @@ function generateCodingRules() {
     
     // Create the final .lsrules structure
     const output = {
-      description: "Generated coding agent rules - cross of paths.json and remotes.json",
+      description: "Generated coding agent rules - cross of config/paths.json and the coding-tagged entries of config/domains.json",
       name: "Coding agents",
       rules: rules
     };
@@ -117,7 +176,6 @@ function generateCodingRules() {
     }
 
     // Write output file
-    const outputPath = 'generated/coding.lsrules';
     fs.writeFileSync(outputPath, JSON.stringify(output, null, 2) + '\n');
     
     console.log(`[Coding] Successfully wrote ${outputPath}`);
@@ -132,48 +190,17 @@ function generateCodingRules() {
 }
 
 /**
- * Extract all unique remotes from individual browser .lsrules files
+ * Collect the tagged browser destinations from the domain registry.
  */
-function extractBrowserRemotes(browserTargets = BROWSER_TARGETS) {
-  const remotesMap = new Map();
+function browserRemotesFromRegistry(registry) {
+  const allRemotes = [
+    ...registryValues(registry.domains, 'browsers')
+      .map((value) => ({ key: 'remote-domains', value })),
+    ...registryValues(registry.hosts, 'browsers')
+      .map((value) => ({ key: 'remote-hosts', value })),
+  ];
 
-  for (const target of browserTargets) {
-    if (!fs.existsSync(target.sourceFile)) {
-      console.warn(`Warning: Browser file not found: ${target.sourceFile}`);
-      continue;
-    }
-
-    try {
-      const data = JSON.parse(fs.readFileSync(target.sourceFile, 'utf8'));
-      if (data.rules && Array.isArray(data.rules)) {
-        for (const rule of data.rules) {
-          if (rule['remote-domains']) {
-            const domain = rule['remote-domains'].trim();
-            if (domain) {
-              remotesMap.set(`domain:${domain}`, { key: 'remote-domains', value: domain });
-            }
-          }
-          if (rule['remote-hosts']) {
-            const host = rule['remote-hosts'].trim();
-            if (host) {
-              remotesMap.set(`host:${host}`, { key: 'remote-hosts', value: host });
-            }
-          }
-          if (rule['remote-addresses']) {
-            const addr = rule['remote-addresses'].trim();
-            if (addr) {
-              remotesMap.set(`addr:${addr}`, { key: 'remote-addresses', value: addr });
-            }
-          }
-        }
-      }
-    } catch (err) {
-      console.error(`Error reading ${target.sourceFile}:`, err.message);
-      throw err;
-    }
-  }
-
-  return Array.from(remotesMap.values()).sort((a, b) => a.value.localeCompare(b.value));
+  return allRemotes.sort((a, b) => a.value.localeCompare(b.value));
 }
 
 /**
@@ -186,8 +213,9 @@ function generateBrowserRules(options = {}) {
   } = options;
 
   try {
-    const allRemotes = extractBrowserRemotes(browserTargets);
-    console.log(`[Browsers] Loaded ${allRemotes.length} unique remote destinations from ${browserTargets.length} browser files`);
+    const registry = loadRegistry();
+    const allRemotes = browserRemotesFromRegistry(registry);
+    console.log(`[Browsers] Loaded ${allRemotes.length} unique remote destinations from config/domains.json`);
 
     const rules = [];
 
@@ -221,13 +249,120 @@ function generateBrowserRules(options = {}) {
 
     fs.writeFileSync(outputPath, JSON.stringify(output, null, 2) + '\n');
     console.log(`[Browsers] Successfully wrote ${outputPath}`);
-    console.log(`[Browsers] Subscribe URL: https://[your-github-username].github.io/collection-lsrules/${outputPath}`);
+    console.log('[Browsers] Subscribe URL: https://[your-github-username].github.io/collection-lsrules/generated/browsers.lsrules');
 
     return outputPath;
   } catch (error) {
     console.error('Error generating browser rules:', error.message);
     process.exit(1);
   }
+}
+
+const TERMINAL_PROCESS = 'identifier.APPLE/com.apple.Terminal';
+
+/**
+ * Generate terminal.lsrules from the domain registry. Terminal rules carry
+ * no port restriction: the live Terminal allows are port-unrestricted, and
+ * pinning 443 would break non-HTTPS dev traffic such as git-over-SSH.
+ */
+function generateTerminalRules(options = {}) {
+  const {
+    outputPath = 'terminal.lsrules',
+  } = options;
+
+  try {
+    const registry = loadRegistry();
+    // Domains and hosts both feed the terminal list, keyed the same way the
+    // coding and browsers generators key them.
+    const allRemotes = [
+      ...registryValues(registry.domains, 'terminal')
+        .map((value) => ({ key: 'remote-domains', value })),
+      ...registryValues(registry.hosts, 'terminal')
+        .map((value) => ({ key: 'remote-hosts', value })),
+    ];
+    const codingValues = new Set([
+      ...registryValues(registry.domains, 'coding'),
+      ...registryValues(registry.hosts, 'coding'),
+    ]);
+    console.log(`[Terminal] Loaded ${allRemotes.length} destinations from config/domains.json`);
+
+    const rules = allRemotes.map((remote) => ({
+      priority: 'regular',
+      process: TERMINAL_PROCESS,
+      owner: 'any',
+      [remote.key]: remote.value,
+      protocol: 'any',
+      notes: codingValues.has(remote.value)
+        ? 'Shared with the coding agents harness (config/domains.json).'
+        : 'Allowed via Little Snitch connection alert; synced from local model export.',
+      action: 'allow',
+      direction: 'outgoing',
+    }));
+
+    console.log(`[Terminal] Generated ${rules.length} rules`);
+
+    const output = {
+      description: 'Allow outgoing connections from Terminal.app to development tooling and the coding agents harness destinations.',
+      name: 'Terminal',
+      rules: rules,
+    };
+
+    fs.writeFileSync(outputPath, JSON.stringify(output, null, 2) + '\n');
+    console.log(`[Terminal] Successfully wrote ${outputPath}`);
+
+    return outputPath;
+  } catch (error) {
+    console.error('Error generating terminal rules:', error.message);
+    process.exit(1);
+  }
+}
+
+/**
+ * Drift check for CI and local use: fails when any generated output is
+ * stale or when the registry contradicts blocked.lsrules. Regenerates into
+ * a temp dir and byte-compares against the working tree.
+ */
+function checkRules() {
+  // The committed outputs are always rendered with the placeholder home, so
+  // the check must compare against placeholder output too, regardless of
+  // any LSRULES_HOME set in the caller's environment.
+  if (process.env.LSRULES_HOME && process.env.LSRULES_HOME !== PLACEHOLDER_HOME) {
+    console.log(`[Check] Ignoring LSRULES_HOME=${process.env.LSRULES_HOME}; comparing against ${PLACEHOLDER_HOME} output.`);
+  }
+  const registry = loadRegistry();
+  checkBlockedContradictions(registry);
+  console.log('[Check] No blocked-list contradictions.');
+
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'lsrules-check-'));
+  const cases = [
+    ['generated/coding.lsrules', (p) => generateCodingRules({ outputPath: p, home: PLACEHOLDER_HOME })],
+    ['generated/browsers.lsrules', (p) => generateBrowserRules({ outputPath: p })],
+    ['terminal.lsrules', (p) => generateTerminalRules({ outputPath: p })],
+  ];
+
+  let drifted = false;
+  for (const [relative, run] of cases) {
+    const tmpPath = path.join(tmpDir, path.basename(relative));
+    run(tmpPath);
+    const fresh = fs.readFileSync(tmpPath, 'utf8');
+    const current = fs.existsSync(relative)
+      ? fs.readFileSync(relative, 'utf8')
+      : null;
+    if (current === null) {
+      console.error(`[Check] missing ${relative} — run npm run generate`);
+      drifted = true;
+    } else if (fresh !== current) {
+      console.error(`[Check] drift in ${relative} — run npm run generate`);
+      drifted = true;
+    } else {
+      console.log(`[Check] ${relative} up to date.`);
+    }
+  }
+
+  if (drifted) {
+    process.exit(1);
+  }
+  console.log('[Check] All generated files up to date.');
 }
 
 /**
@@ -261,33 +396,54 @@ function extractRemotes(lsrulesPath) {
 // CLI interface
 if (require.main === module) {
   const args = process.argv.slice(2);
-  
-  if (args[0] === 'extract' && args[1]) {
+
+  if (args[0] === 'check' || args[0] === '--check') {
+    // Check mode: verify generated outputs are fresh and consistent
+    checkRules();
+  } else if (args[0] === 'extract' && args[1]) {
     // Extract mode: node generate-rules.js extract path/to/exported.lsrules
     extractRemotes(args[1]);
   } else if (args[0] === 'extract') {
     console.error('Usage: node generate-rules.js extract <path-to-lsrules-file>');
     console.error('Example: node generate-rules.js extract chrome.lsrules');
     process.exit(1);
-  } else if (args[0] === 'coding') {
-    // Generate only coding agent rules
-    generateCodingRules();
-  } else if (args[0] === 'browsers') {
-    // Generate only browser rules
-    generateBrowserRules();
   } else {
-    // Default mode: generate all rules (coding and browsers)
-    generateCodingRules();
-    console.log('');
-    generateBrowserRules();
+    // Every generation fails closed on blocked-list contradictions.
+    checkBlockedContradictions(loadRegistry());
+
+    if (args[0] === 'coding') {
+      // Generate only coding agent rules
+      generateCodingRules();
+    } else if (args[0] === 'browsers') {
+      // Generate only browser rules
+      generateBrowserRules();
+    } else if (args[0] === 'terminal') {
+      // Generate only terminal rules
+      generateTerminalRules();
+    } else {
+      // Default mode: generate all rules (coding, browsers, terminal)
+      generateCodingRules();
+      console.log('');
+      generateBrowserRules();
+      console.log('');
+      generateTerminalRules();
+    }
   }
 }
 
 module.exports = {
   generateCodingRules,
   generateBrowserRules,
+  generateTerminalRules,
   generateRules: generateCodingRules, // Backward compatibility
   extractRemotes,
-  extractBrowserRemotes,
+  browserRemotesFromRegistry,
+  loadRegistry,
+  registryValues,
+  checkBlockedContradictions,
+  checkRules,
+  expandHome,
+  PLACEHOLDER_HOME,
+  TERMINAL_PROCESS,
   BROWSER_TARGETS
 };

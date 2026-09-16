@@ -10,8 +10,8 @@
       "url": "./schemas/paths-schema.json"
     },
     {
-      "fileMatch": ["config/remotes.json"],
-      "url": "./schemas/remotes-schema.json"
+      "fileMatch": ["config/domains.json"],
+      "url": "./schemas/domains-schema.json"
     }
   ],
   
@@ -22,7 +22,7 @@
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.patterns": {
     "package.json": "package-lock.json, yarn.lock",
-    "config/remotes.json": "remotes-*.json",
+    "config/domains.json": "domains-*.json",
     "config/paths.json": "paths-*.json"
   },
   

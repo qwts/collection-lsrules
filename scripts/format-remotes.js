@@ -1,19 +1,37 @@
 #!/usr/bin/env node
 
 const fs = require('fs');
-const path = require('path');
 
 /**
- * VS Code Formatter for Little Snitch remotes
- * 
+ * Formatter and merger for the unified domain registry (config/domains.json).
+ *
  * Usage:
- * 1. Copy Little Snitch output to clipboard
- * 2. Open config/remotes.json in VS Code
- * 3. Run: node scripts/format-remotes.js --format
- * 
- * Or pipe output directly:
- * cat raw-ls-output.txt | node scripts/format-remotes.js
+ *   node scripts/format-remotes.js --format
+ *       Sort and de-duplicate config/domains.json in place.
+ *   pbpaste | node scripts/format-remotes.js --extract
+ *   node scripts/format-remotes.js --extract raw-ls-output.txt
+ *       Print the destinations found in a Little Snitch export.
+ *   pbpaste | node scripts/format-remotes.js --merge [--lists coding,terminal]
+ *   node scripts/format-remotes.js --merge new-rules.txt --lists browsers
+ *       Merge the destinations found in the input into config/domains.json.
+ *       New entries are tagged with --lists (default: coding); existing
+ *       entries gain any tags they were missing. Run `npm run generate`
+ *       afterwards to refresh the .lsrules outputs.
  */
+
+const REGISTRY_PATH = 'config/domains.json';
+const VALID_LISTS = ['coding', 'browsers', 'terminal'];
+const DEFAULT_LISTS = ['coding'];
+
+function addValues(target, values) {
+  for (const value of values || []) {
+    if (typeof value === 'string' && value.trim().length > 0) {
+      target.add(value.trim());
+    } else if (value && typeof value.value === 'string' && value.value.trim().length > 0) {
+      target.add(value.value.trim());
+    }
+  }
+}
 
 function extractDomainsFromJSON(text) {
   const domains = new Set();
@@ -25,13 +43,10 @@ function extractDomainsFromJSON(text) {
     return null; // Not JSON, caller should fall back to plain-text parsing
   }
 
-  // config/remotes.json shape: { domains: [...], hosts: [...] }
+  // Registry shape ({ domains: [{ value, lists }] }) and the legacy
+  // remotes.json shape ({ domains: ["..."] }).
   if (Array.isArray(data.domains)) {
-    for (const domain of data.domains) {
-      if (typeof domain === 'string' && domain.length > 0) {
-        domains.add(domain.trim());
-      }
-    }
+    addValues(domains, data.domains);
   }
 
   // .lsrules shape: { rules: [ { "remote-domains": "..." | [...] }, ... ] }
@@ -41,11 +56,7 @@ function extractDomainsFromJSON(text) {
       if (typeof remoteDomains === 'string') {
         domains.add(remoteDomains.trim());
       } else if (Array.isArray(remoteDomains)) {
-        for (const domain of remoteDomains) {
-          if (typeof domain === 'string' && domain.length > 0) {
-            domains.add(domain.trim());
-          }
-        }
+        addValues(domains, remoteDomains);
       }
     }
   }
@@ -54,7 +65,7 @@ function extractDomainsFromJSON(text) {
 }
 
 function extractDomainsFromText(text) {
-  // Prefer structural JSON parsing for JSON inputs (config/remotes.json,
+  // Prefer structural JSON parsing for JSON inputs (config/domains.json,
   // .lsrules files). Only fall back to the plain-text regex parser for
   // Little Snitch's plain-text export, which is not valid JSON.
   const jsonDomains = extractDomainsFromJSON(text);
@@ -83,155 +94,208 @@ function extractDomainsFromText(text) {
   return Array.from(domains).sort();
 }
 
-function createRemotesJSON(domains, existingConfig = null) {
-  const today = new Date().toISOString().split('T')[0];
-  
+function parseLists(spec) {
+  const lists = String(spec)
+    .split(',')
+    .map((item) => item.trim())
+    .filter((item) => item.length > 0);
+  const invalid = lists.filter((item) => !VALID_LISTS.includes(item));
+  if (lists.length === 0 || invalid.length > 0) {
+    throw new Error(
+      `--lists expects a comma-separated subset of ${VALID_LISTS.join(', ')} (got "${spec}")`
+    );
+  }
+  return sortLists(lists);
+}
+
+function sortLists(lists) {
+  return Array.from(new Set(lists)).sort();
+}
+
+function loadRegistry(registryPath = REGISTRY_PATH) {
+  const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
   return {
-    description: existingConfig?.description || "Remote destinations for coding agents",
-    domains: domains,
-    hosts: existingConfig?.hosts || [],
-    notes: existingConfig?.notes || `Extracted from Little Snitch rule export - ${domains.length} unique domains`,
-    lastUpdated: today
+    ...registry,
+    domains: Array.isArray(registry.domains) ? registry.domains : [],
+    hosts: Array.isArray(registry.hosts) ? registry.hosts : [],
   };
 }
 
-function formatRemotesJSON(inputText, existingConfigPath = null) {
-  const domains = extractDomainsFromText(inputText);
-  
-  let existingConfig = null;
-  if (existingConfigPath && fs.existsSync(existingConfigPath)) {
-    try {
-      existingConfig = JSON.parse(fs.readFileSync(existingConfigPath, 'utf8'));
-    } catch (e) {
-      console.warn(`Could not parse existing config at ${existingConfigPath}:`, e.message);
+function normalizeEntries(entries, section) {
+  const byValue = new Map();
+  for (const entry of entries) {
+    if (!entry || typeof entry.value !== 'string' || entry.value.trim().length === 0) {
+      throw new Error(`${section}: every entry needs a non-empty "value"`);
+    }
+    if (!Array.isArray(entry.lists) || entry.lists.length === 0) {
+      throw new Error(`${section}: "${entry.value}" needs a non-empty "lists" array`);
+    }
+    const invalid = entry.lists.filter((item) => !VALID_LISTS.includes(item));
+    if (invalid.length > 0) {
+      throw new Error(
+        `${section}: "${entry.value}" has unknown lists ${invalid.join(', ')} (valid: ${VALID_LISTS.join(', ')})`
+      );
+    }
+    const value = entry.value.trim();
+    const existing = byValue.get(value);
+    byValue.set(value, {
+      ...(existing || {}),
+      ...entry,
+      value,
+      lists: sortLists([...(existing ? existing.lists : []), ...entry.lists]),
+    });
+  }
+  return Array.from(byValue.values()).sort((a, b) => (a.value < b.value ? -1 : a.value > b.value ? 1 : 0));
+}
+
+/**
+ * Canonical registry form: entries de-duplicated (lists merged) and sorted
+ * by value, list tags sorted. Idempotent on an already-formatted file.
+ */
+function normalizeRegistry(registry) {
+  return {
+    ...registry,
+    domains: normalizeEntries(registry.domains, 'domains'),
+    hosts: normalizeEntries(registry.hosts, 'hosts'),
+  };
+}
+
+function writeRegistry(registry, registryPath = REGISTRY_PATH) {
+  fs.writeFileSync(registryPath, JSON.stringify(registry, null, 2) + '\n');
+}
+
+/**
+ * Merge domains into the registry. New values are added with `lists`;
+ * existing values gain any of `lists` they were missing.
+ */
+function mergeDomains(registry, domains, lists = DEFAULT_LISTS) {
+  const byValue = new Map(registry.domains.map((entry) => [entry.value, entry]));
+  const added = [];
+  const retagged = [];
+  for (const value of domains) {
+    const existing = byValue.get(value);
+    if (!existing) {
+      byValue.set(value, { value, lists: sortLists(lists) });
+      added.push(value);
+      continue;
+    }
+    const merged = sortLists([...existing.lists, ...lists]);
+    if (merged.length !== existing.lists.length) {
+      existing.lists = merged;
+      retagged.push(value);
     }
   }
-  
-  const formatted = createRemotesJSON(domains, existingConfig);
-  
   return {
-    domains: domains,
-    formatted: formatted,
-    stats: {
-      totalDomains: domains.length,
-      formattedJSON: JSON.stringify(formatted, null, 2)
-    }
+    registry: normalizeRegistry({ ...registry, domains: Array.from(byValue.values()) }),
+    added,
+    retagged,
   };
+}
+
+function readInput(inputFile) {
+  if (inputFile && fs.existsSync(inputFile)) {
+    return fs.readFileSync(inputFile, 'utf8');
+  }
+  // Read from stdin
+  return fs.readFileSync(0, 'utf8');
+}
+
+function parseArgs(args) {
+  const positional = [];
+  let lists = null;
+  for (let i = 0; i < args.length; i += 1) {
+    if (args[i] === '--lists' || args[i] === '-l') {
+      lists = parseLists(args[i + 1]);
+      i += 1;
+    } else if (args[i].startsWith('--lists=')) {
+      lists = parseLists(args[i].slice('--lists='.length));
+    } else {
+      positional.push(args[i]);
+    }
+  }
+  return { positional, lists };
+}
+
+function requireRegistry() {
+  if (!fs.existsSync(REGISTRY_PATH)) {
+    console.error(`Registry not found: ${REGISTRY_PATH}`);
+    process.exit(1);
+  }
 }
 
 // Command line interface
 if (require.main === module) {
-  const args = process.argv.slice(2);
-  
-  if (args[0] === '--format' || args[0] === '-f') {
-    // Format mode: reads from config/remotes.json, formats, writes back
-    const configPath = 'config/remotes.json';
-    
-    if (!fs.existsSync(configPath)) {
-      console.error(`Config file not found: ${configPath}`);
-      process.exit(1);
-    }
-    
-    const currentContent = fs.readFileSync(configPath, 'utf8');
-    const result = formatRemotesJSON(currentContent, configPath);
-    
-    console.log(`Extracted ${result.domains.length} domains from config file`);
-    console.log(JSON.stringify(result.formatted, null, 2));
-    
-    // Write back if domains were found
-    if (result.domains.length > 0) {
-      fs.writeFileSync(configPath, JSON.stringify(result.formatted, null, 2));
-      console.log(`\n✅ Updated ${configPath}`);
-    }
-    
-  } else if (args[0] === '--extract' || args[0] === '-e') {
-    // Extract mode: reads from stdin or file, outputs formatted JSON
-    const inputFile = args[1];
-    let inputText;
-    
-    if (inputFile && fs.existsSync(inputFile)) {
-      inputText = fs.readFileSync(inputFile, 'utf8');
-    } else {
-      // Read from stdin
-      inputText = fs.readFileSync(0, 'utf8');
-    }
-    
-    const result = formatRemotesJSON(inputText);
-    
-    console.log(`Extracted ${result.domains.length} domains:`);
-    console.log(result.stats.formattedJSON);
-    
-  } else if (args[0] === '--merge' || args[0] === '-m') {
-    // Merge mode: merge new domains with existing config
-    const configPath = 'config/remotes.json';
-    
-    if (!fs.existsSync(configPath)) {
-      console.error(`Config file not found: ${configPath}`);
-      process.exit(1);
-    }
-    
-    const inputFile = args[1];
-    let inputText;
-    
-    if (inputFile && fs.existsSync(inputFile)) {
-      inputText = fs.readFileSync(inputFile, 'utf8');
-    } else {
-      // Read from stdin
-      inputText = fs.readFileSync(0, 'utf8');
-    }
-    
-    const existingConfig = JSON.parse(fs.readFileSync(configPath, 'utf8'));
-    const newDomains = extractDomainsFromText(inputText);
-    const existingDomains = new Set(existingConfig.domains || []);
-    
-    // Merge domains
-    const mergedDomains = Array.from(new Set([...existingDomains, ...newDomains])).sort();
-    
-    const updatedConfig = {
-      ...existingConfig,
-      domains: mergedDomains,
-      lastUpdated: new Date().toISOString().split('T')[0],
-      notes: `${existingConfig.notes || 'Extracted from Little Snitch rules'} + ${newDomains.length} new domains merged`
-    };
-    
-    console.log(`Merged ${mergedDomains.length} domains (${existingDomains.size} existing + ${newDomains.length} new)`);
-    console.log(JSON.stringify(updatedConfig, null, 2));
-    
-    fs.writeFileSync(configPath, JSON.stringify(updatedConfig, null, 2));
-    console.log(`\n✅ Merged and updated ${configPath}`);
-    
+  const { positional, lists } = parseArgs(process.argv.slice(2));
+  const mode = positional[0];
+
+  if (mode === '--format' || mode === '-f') {
+    // Format mode: sort and de-duplicate config/domains.json in place
+    requireRegistry();
+    const registry = normalizeRegistry(loadRegistry());
+    writeRegistry(registry);
+    console.log(
+      `✅ Formatted ${REGISTRY_PATH}: ${registry.domains.length} domains, ${registry.hosts.length} hosts`
+    );
+
+  } else if (mode === '--extract' || mode === '-e') {
+    // Extract mode: reads from stdin or file, prints the sorted destinations
+    const domains = extractDomainsFromText(readInput(positional[1]));
+    console.log(`Extracted ${domains.length} domains:`);
+    console.log(JSON.stringify(domains, null, 2));
+
+  } else if (mode === '--merge' || mode === '-m') {
+    // Merge mode: add extracted destinations to config/domains.json
+    requireRegistry();
+    const tags = lists || DEFAULT_LISTS;
+    const domains = extractDomainsFromText(readInput(positional[1]));
+    const result = mergeDomains(loadRegistry(), domains, tags);
+    writeRegistry(result.registry);
+
+    console.log(`Merged ${domains.length} extracted domains into ${REGISTRY_PATH} (lists: ${tags.join(', ')})`);
+    console.log(`  new entries:        ${result.added.length}${result.added.length ? ' - ' + result.added.join(', ') : ''}`);
+    console.log(`  existing re-tagged: ${result.retagged.length}${result.retagged.length ? ' - ' + result.retagged.join(', ') : ''}`);
+    console.log(`  registry now holds ${result.registry.domains.length} domains`);
+    console.log('\n✅ Run `npm run generate` to refresh the .lsrules outputs');
+
   } else {
     // Help mode
     console.log(`
-Little Snitch Remotes Formatter
-===============================
+Little Snitch Domain Registry Formatter
+=======================================
 
 Usage:
-  node scripts/format-remotes.js [option]
+  node scripts/format-remotes.js [option] [file] [--lists coding,browsers,terminal]
 
 Options:
-  --format, -f      Format existing config/remotes.json file
-  --extract, -e     Extract domains from stdin or file and output formatted JSON
-  --merge, -m       Merge new domains with existing config file
+  --format, -f      Sort and de-duplicate ${REGISTRY_PATH} in place
+  --extract, -e     Extract domains from stdin or file and print them as JSON
+  --merge, -m       Merge extracted domains into ${REGISTRY_PATH}
+  --lists, -l       Lists to tag merged domains with (default: ${DEFAULT_LISTS.join(',')})
 
 Examples:
-  1. Format current config file:
+  1. Format the registry:
      node scripts/format-remotes.js --format
 
-  2. Extract from Little Snitch output file:
+  2. Extract from a Little Snitch export file:
      node scripts/format-remotes.js --extract raw-output.txt
 
   3. Pipe Little Snitch output:
      pbpaste | node scripts/format-remotes.js --extract
 
-  4. Merge new domains with existing config:
+  4. Merge new coding-agent domains from the clipboard:
      pbpaste | node scripts/format-remotes.js --merge
+
+  5. Merge new browser domains from a file:
+     node scripts/format-remotes.js --merge new-rules.txt --lists browsers
     `);
   }
 }
 
 module.exports = {
   extractDomainsFromText,
-  formatRemotesJSON,
-  createRemotesJSON
+  normalizeRegistry,
+  mergeDomains,
+  REGISTRY_PATH,
+  VALID_LISTS,
+  DEFAULT_LISTS
 };

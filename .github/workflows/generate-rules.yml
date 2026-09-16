@@ -5,20 +5,27 @@ on:
     branches: [ main ]
     paths:
       - 'config/paths.json'
-      - 'config/remotes.json'
+      - 'config/domains.json'
+      - 'blocked.lsrules'
       - '.github/workflows/generate-rules.yml'
       - 'scripts/generate-rules.js'
   pull_request:
     branches: [ main ]
     paths:
       - 'config/paths.json'
-      - 'config/remotes.json'
+      - 'config/domains.json'
+      - 'blocked.lsrules'
       - '.github/workflows/generate-rules.yml'
       - 'scripts/generate-rules.js'
   workflow_dispatch: # Allow manual triggering
 
 permissions:
   contents: write # Required for the commit-and-push step below
+
+env:
+  # Every output rendered from config/domains.json. Keep in sync with the
+  # cases list in checkRules() in scripts/generate-rules.js.
+  GENERATED_FILES: generated/coding.lsrules generated/browsers.lsrules terminal.lsrules
 
 jobs:
   generate:
@@ -33,20 +40,26 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '20'
-        
-    - name: Generate coding.lsrules
+
+    - name: Check committed outputs are fresh
+      # Pull requests must ship regenerated outputs: fail closed on drift or
+      # on registry entries that contradict blocked.lsrules.
+      if: github.event_name == 'pull_request'
+      run: npm test
+
+    - name: Generate coding, browsers and terminal rules
       run: |
         node scripts/generate-rules.js
         
-    - name: Check if coding.lsrules changed
+    - name: Check if generated outputs changed
       id: check-changes
       run: |
-        if git diff --exit-code --name-only generated/coding.lsrules; then
+        if git diff --exit-code --name-only -- $GENERATED_FILES; then
           echo "changes=false" >> $GITHUB_OUTPUT
-          echo "No changes to coding.lsrules"
+          echo "No changes to generated outputs"
         else
           echo "changes=true" >> $GITHUB_OUTPUT
-          echo "coding.lsrules was updated"
+          echo "Generated outputs were updated"
         fi
         
     - name: Commit and push if changed
@@ -57,13 +70,16 @@ jobs:
       run: |
         git config --global user.name 'GitHub Action'
         git config --global user.email 'action@github.com'
-        git add generated/coding.lsrules
-        git commit -m "chore: regenerate coding.lsrules [skip ci]"
+        git add -- $GENERATED_FILES
+        git commit -m "chore: regenerate Little Snitch rules [skip ci]"
         git push
         
-    - name: Upload coding.lsrules as artifact
+    - name: Upload generated rules as artifact
       uses: actions/upload-artifact@v4
       with:
-        name: coding-lsrules
-        path: generated/coding.lsrules
+        name: lsrules
+        path: |
+          generated/coding.lsrules
+          generated/browsers.lsrules
+          terminal.lsrules
         retention-days: 7

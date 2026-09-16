@@ -1,14 +1,14 @@
 # Little Snitch Rule Generator for Coding Agents
 
-A generator that stops cloning the same remotes for every new binary. Two lists (`remotes.json` and `paths.json`) cross into one subscribed group (`coding.lsrules`).
+A generator that stops cloning the same remotes for every new binary. One tagged registry (`config/domains.json`) crossed with `paths.json` renders every subscribed group (`coding.lsrules`, `browsers.lsrules`, `terminal.lsrules`).
 
 ## What This Does
 
 Instead of maintaining separate `.lsrules` files for each coding agent (Claude, Codex, Cursor, Devin, etc.), you maintain:
-1. **`remotes.json`** - A single list of destinations (domains, hosts, IPs)
+1. **`domains.json`** - A single registry of destinations (domains, hosts, IPs); each entry lists the outputs that consume it (`coding`, `browsers`, `terminal`)
 2. **`paths.json`** - A list of binaries/apps with their Little Snitch process values
 
-The generator crosses every path with every remote to produce `coding.lsrules` - one rule group for all coding agents.
+The generator crosses every path with every `coding`-tagged destination to produce `coding.lsrules` - one rule group for all coding agents - and renders `browsers.lsrules` and `terminal.lsrules` from the same registry.
 
 ## 🚀 Quick Start (Already Configured!)
 
@@ -59,21 +59,22 @@ Copy Little Snitch output → `Cmd+Shift+P` → "Merge Domains from Clipboard"
 - Bundle identifier: `identifier.TEAMID/com.example.app`
 - See existing `.lsrules` files for examples
 
-### `remotes.json` - Remote Destinations
+### `domains.json` - Remote Destinations
 ```json
 {
-  "description": "Remote destinations for coding agents",
+  "description": "Single source of truth for allowed destinations.",
   "domains": [
-    "anthropic.com",
-    "claude.ai",
-    "github.com"
+    { "value": "anthropic.com", "lists": ["coding", "terminal"] },
+    { "value": "github.com", "lists": ["browsers", "coding", "terminal"] }
   ],
   "hosts": [
-    "192.168.1.100"
-  ],
-  "notes": "Extracted from ~82 existing Little Snitch rules"
+    { "value": "192.168.1.100", "lists": ["coding"] }
+  ]
 }
 ```
+
+Every entry names the lists that consume it. `npm test` fails if any entry
+also appears in `blocked.lsrules` or if a committed output is stale.
 
 ## Setup for Chris
 
@@ -85,7 +86,7 @@ Copy Little Snitch output → `Cmd+Shift+P` → "Merge Domains from Clipboard"
    # etc...
    ```
 
-2. **Combine all unique domains** into `remotes.json` → `domains` array
+2. **Merge all unique domains** into `config/domains.json`: `pbpaste | npm run merge-remotes` (tags them `coding`; pass `-- --lists browsers,terminal` for other outputs)
 
 3. **Update paths with real values** in `paths.json`:
    - Check actual bundle identifiers using:
@@ -102,15 +103,18 @@ Copy Little Snitch output → `Cmd+Shift+P` → "Merge Domains from Clipboard"
 ## Automation
 
 ### GitHub Action
-- Auto-runs when `paths.json` or `remotes.json` changes
-- Commits updated `coding.lsrules` back to repo
+- Auto-runs when `paths.json`, `domains.json`, `blocked.lsrules` or the generator changes
+- Commits updated `coding.lsrules`, `browsers.lsrules` and `terminal.lsrules` back to repo
+- Runs `npm test` on pull requests so stale outputs cannot merge
 - Works on push to `main` branch
 
 ### Manual Generation
 ```bash
-npm run generate           # Generate both coding.lsrules and browsers.lsrules
+npm run generate           # Generate coding.lsrules, browsers.lsrules and terminal.lsrules
 npm run generate:browsers  # Generate browsers.lsrules
 npm run generate:coding    # Generate coding.lsrules
+npm run generate:terminal  # Generate terminal.lsrules
+npm test                   # Verify committed outputs match the registry
 npm run extract -- file.lsrules  # Extract remotes from existing file
 ```
 
@@ -159,13 +163,13 @@ npm run extract -- file.lsrules  # Extract remotes from existing file
 collection-lsrules/
 ├── config/                       # CONFIGURATION - Edit these
 │   ├── paths.json               # 7 real apps (ChatGPT, Claude, Cursor, Devin, Kiro, Muse, OpenCode)
-│   └── remotes.json             # 82 domains (extracted from Little Snitch)
+│   └── domains.json             # Tagged destination registry (single source of truth)
 ├── generated/                    # GENERATED OUTPUT
 │   ├── coding.lsrules           # 2,460 rules (30×82) - subscribe to this!
 │   └── browsers.lsrules         # 1,148 rules (4×287) - subscribe to this!
 ├── scripts/                     # TOOLS
 │   ├── generate-rules.js        # Main generator: npm run generate
-│   ├── format-remotes.js       # VS Code formatter: npm run format-remotes
+│   ├── format-remotes.js       # Registry formatter/merger: npm run format-remotes
 │   └── workflow-demo.sh        # Quick demo: ./scripts/workflow-demo.sh
 ├── docs/                        # DOCUMENTATION
 │   ├── README.md              # Main documentation (you are here)
@@ -176,7 +180,7 @@ collection-lsrules/
 │   ├── launch.json            # Debug configurations
 │   └── settings.json          # Auto-format & validation
 ├── schemas/                    # JSON VALIDATION
-│   ├── remotes-schema.json    # Schema for config/remotes.json
+│   ├── domains-schema.json    # Schema for config/domains.json
 │   └── paths-schema.json      # Schema for config/paths.json
 ├── .github/workflows/          # AUTOMATION
 │   └── generate-rules.yml     # Auto-generates on config changes

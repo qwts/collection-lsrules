@@ -30,7 +30,7 @@ Subscribe URL: https://[your-github-username].github.io/collection-lsrules/gener
 ```
 config/
 ├── paths.json     # 30 supported harness process paths
-└── remotes.json   # 82 domains extracted from your rules
+└── domains.json   # Tagged destination registry (82 entries tagged coding)
 ```
 
 ### **Generated Output (Subscribe to This)**
@@ -43,7 +43,7 @@ generated/
 ```
 scripts/
 ├── generate-rules.js    # Main generator: npm run generate
-├── format-remotes.js    # VS Code formatter: npm run format-remotes
+├── format-remotes.js    # Registry formatter/merger: npm run format-remotes
 └── workflow-demo.sh     # Status check: ./scripts/workflow-demo.sh
 
 .github/workflows/
@@ -58,7 +58,7 @@ scripts/
 └── settings.json   # Auto-format & JSON validation
 
 schemas/
-├── remotes-schema.json  # Validates config/remotes.json
+├── domains-schema.json  # Validates config/domains.json
 └── paths-schema.json    # Validates config/paths.json
 ```
 
@@ -89,8 +89,9 @@ https://[your-github-username].github.io/collection-lsrules/generated/coding.lsr
 
 ### **3. Add New Domains**
 ```
-# Copy Little Snitch output, then:
+# Copy Little Snitch output, then (new domains are tagged "coding"):
 pbpaste | npm run merge-remotes
+npm run generate
 
 # Or use VS Code task:
 Cmd+Shift+P → "Tasks: Run Task" → "Merge Domains from Clipboard"
@@ -106,13 +107,13 @@ Cmd+Shift+P → "Tasks: Run Task" → "Merge Domains from Clipboard"
 ## 🔄 **Automation Workflow**
 
 ```
-You: Edit config/paths.json or config/remotes.json
+You: Edit config/paths.json or config/domains.json
 ↓
 You: Commit & push to GitHub
 ↓
-GitHub Action: Auto-runs, generates new coding.lsrules
+GitHub Action: Auto-runs, generates coding, browsers and terminal .lsrules
 ↓
-GitHub Action: Commits updated file back to repo
+GitHub Action: Commits updated files back to repo
 ↓
 Little Snitch: Auto-updates via subscription URL
 ```
@@ -144,6 +145,7 @@ npm run extract -- file2.lsrules
 
 # Merge all unique domains
 pbpaste | npm run merge-remotes
+npm run generate
 ```
 
 ### **Ongoing:**
