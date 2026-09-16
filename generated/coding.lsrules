@@ -1,5 +1,5 @@
 {
-  "description": "Generated coding agent rules - cross of paths.json and remotes.json",
+  "description": "Generated coding agent rules - cross of config/paths.json and the coding-tagged entries of config/domains.json",
   "name": "Coding agents",
   "rules": [
     {

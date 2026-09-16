@@ -47,12 +47,17 @@ const BROWSER_TARGETS = [
 // the current user's home directory (e.g. CLI tools installed under
 // ~/.local/bin), and we expand it here to the real path of whoever runs the
 // generator, so the emitted rules work on their machine.
-function expandHome(processPath) {
+// Home directory baked into the committed outputs. A plain `npm run generate`
+// uses this placeholder so a real local home directory can never leak into
+// the public repo; set LSRULES_HOME=$HOME explicitly for machine-local output.
+const PLACEHOLDER_HOME = '/Users/user';
+
+function defaultHome() {
+  return process.env.LSRULES_HOME || PLACEHOLDER_HOME;
+}
+
+function expandHome(processPath, targetHome = defaultHome()) {
   if (typeof processPath === 'string' && processPath.startsWith('~')) {
-    // Default to the publish placeholder so a plain `npm run generate`
-    // can never bake a real local home directory into the public repo.
-    // Set LSRULES_HOME=$HOME explicitly for machine-local output.
-    const targetHome = process.env.LSRULES_HOME || '/Users/user';
     return path.join(targetHome, processPath.slice(1));
   }
   return processPath;
@@ -102,12 +107,13 @@ function checkBlockedContradictions(
 function generateCodingRules(options = {}) {
   const {
     outputPath = 'generated/coding.lsrules',
+    home = defaultHome(),
   } = options;
 
   try {
     // Read configuration files
     const pathsData = JSON.parse(fs.readFileSync('config/paths.json', 'utf8'))
-      .map(entry => ({ ...entry, process: expandHome(entry.process) }));
+      .map(entry => ({ ...entry, process: expandHome(entry.process, home) }));
     const registry = loadRegistry();
 
     const duplicateNames = pathsData.filter((entry, index) =>
@@ -131,8 +137,8 @@ function generateCodingRules(options = {}) {
     console.log(`[Coding] Loaded ${pathsData.length} paths and ${allRemotes.length} remote destinations`);
     
     if (allRemotes.length === 0) {
-      console.warn('Warning: No remote destinations found in remotes.json');
-      console.warn('Add domains or hosts to remotes.json and run again');
+      console.warn('Warning: No destinations tagged "coding" found in config/domains.json');
+      console.warn('Add "coding" to the lists of the domains or hosts to allow and run again');
     }
     
     // Generate rules by crossing paths with remotes
@@ -159,7 +165,7 @@ function generateCodingRules(options = {}) {
     
     // Create the final .lsrules structure
     const output = {
-      description: "Generated coding agent rules - cross of paths.json and remotes.json",
+      description: "Generated coding agent rules - cross of config/paths.json and the coding-tagged entries of config/domains.json",
       name: "Coding agents",
       rules: rules
     };
@@ -266,17 +272,27 @@ function generateTerminalRules(options = {}) {
 
   try {
     const registry = loadRegistry();
-    const domains = registryValues(registry.domains, 'terminal');
-    const codingValues = new Set(registryValues(registry.domains, 'coding'));
-    console.log(`[Terminal] Loaded ${domains.length} destinations from config/domains.json`);
+    // Domains and hosts both feed the terminal list, keyed the same way the
+    // coding and browsers generators key them.
+    const allRemotes = [
+      ...registryValues(registry.domains, 'terminal')
+        .map((value) => ({ key: 'remote-domains', value })),
+      ...registryValues(registry.hosts, 'terminal')
+        .map((value) => ({ key: 'remote-hosts', value })),
+    ];
+    const codingValues = new Set([
+      ...registryValues(registry.domains, 'coding'),
+      ...registryValues(registry.hosts, 'coding'),
+    ]);
+    console.log(`[Terminal] Loaded ${allRemotes.length} destinations from config/domains.json`);
 
-    const rules = domains.map((value) => ({
+    const rules = allRemotes.map((remote) => ({
       priority: 'regular',
       process: TERMINAL_PROCESS,
       owner: 'any',
-      'remote-domains': value,
+      [remote.key]: remote.value,
       protocol: 'any',
-      notes: codingValues.has(value)
+      notes: codingValues.has(remote.value)
         ? 'Shared with the coding agents harness (config/domains.json).'
         : 'Allowed via Little Snitch connection alert; synced from local model export.',
       action: 'allow',
@@ -307,15 +323,19 @@ function generateTerminalRules(options = {}) {
  * a temp dir and byte-compares against the working tree.
  */
 function checkRules() {
-  // expandHome() already defaults to the publish placeholder, so check
-  // output always compares against the canonical committed bytes.
+  // The committed outputs are always rendered with the placeholder home, so
+  // the check must compare against placeholder output too, regardless of
+  // any LSRULES_HOME set in the caller's environment.
+  if (process.env.LSRULES_HOME && process.env.LSRULES_HOME !== PLACEHOLDER_HOME) {
+    console.log(`[Check] Ignoring LSRULES_HOME=${process.env.LSRULES_HOME}; comparing against ${PLACEHOLDER_HOME} output.`);
+  }
   const registry = loadRegistry();
   checkBlockedContradictions(registry);
   console.log('[Check] No blocked-list contradictions.');
 
   const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'lsrules-check-'));
   const cases = [
-    ['generated/coding.lsrules', (p) => generateCodingRules({ outputPath: p })],
+    ['generated/coding.lsrules', (p) => generateCodingRules({ outputPath: p, home: PLACEHOLDER_HOME })],
     ['generated/browsers.lsrules', (p) => generateBrowserRules({ outputPath: p })],
     ['terminal.lsrules', (p) => generateTerminalRules({ outputPath: p })],
   ];
@@ -422,6 +442,8 @@ module.exports = {
   registryValues,
   checkBlockedContradictions,
   checkRules,
+  expandHome,
+  PLACEHOLDER_HOME,
   TERMINAL_PROCESS,
   BROWSER_TARGETS
 };
