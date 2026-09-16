@@ -2,12 +2,12 @@
 
 ## 🎯 Overview
 
-A generator that stops cloning the same remotes for every new binary. Two lists (`remotes.json` and `paths.json`) cross into one subscribed group (`coding.lsrules`).
+A generator that stops cloning the same remotes for every new binary. One tagged registry (`config/domains.json`) crossed with `paths.json` renders every subscribed group (`coding.lsrules`, `browsers.lsrules`, `terminal.lsrules`).
 
 ## 🚀 Problem Solved
 
 Instead of maintaining separate `.lsrules` files for each coding agent (Claude, Codex, Cursor, Devin, etc.), you maintain:
-1. **`remotes.json`** - A single list of destinations (domains, hosts, IPs)
+1. **`domains.json`** - A single registry of destinations (domains, hosts, IPs), each tagged with the outputs that consume it
 2. **`paths.json`** - A list of binaries/apps with their Little Snitch process values
 
 The generator crosses every path with every remote to produce `coding.lsrules` - one rule group for all coding agents.
@@ -28,12 +28,12 @@ The generator crosses every path with every remote to produce `coding.lsrules` -
 collection-lsrules/
 ├── config/                       # Configuration files
 │   ├── paths.json               # 10 apps (7 desktop + 3 CLI)
-│   └── remotes.json             # 82 domains
+│   └── domains.json             # Tagged destination registry
 ├── generated/                    # Generated output
 │   └── coding.lsrules           # 820 rules - subscribe to this!
 ├── scripts/                     # Tools
 │   ├── generate-rules.js        # Main generator
-│   ├── format-remotes.js        # VS Code formatter
+│   ├── format-remotes.js        # Registry formatter/merger
 │   └── workflow-demo.sh         # Status check
 ├── docs/                        # Documentation
 │   ├── HOW-TO-USE.md           # Complete guide
@@ -45,7 +45,7 @@ collection-lsrules/
 ├── .github/workflows/          # Automation
 │   └── generate-rules.yml     # Auto-generates on config changes
 └── schemas/                    # JSON validation
-    ├── remotes-schema.json    # Schema for config/remotes.json
+    ├── domains-schema.json    # Schema for config/domains.json
     └── paths-schema.json      # Schema for config/paths.json
 ```
 
@@ -61,7 +61,7 @@ collection-lsrules/
 ## 🔄 Automation Workflow
 
 ```
-User: Edit config/paths.json or config/remotes.json
+User: Edit config/paths.json or config/domains.json
 ↓
 User: Commit & push to GitHub
 ↓
@@ -102,9 +102,9 @@ Copy Little Snitch output → `Cmd+Shift+P` → "Merge Domains from Clipboard"
 
 ### **New Files:**
 - `config/paths.json` - 10 coding agent apps
-- `config/remotes.json` - 82 remote domains
+- `config/domains.json` - Tagged destination registry
 - `scripts/generate-rules.js` - Rule generator
-- `scripts/format-remotes.js` - VS Code formatter
+- `scripts/format-remotes.js` - Registry formatter/merger
 - `docs/HOW-TO-USE.md` - Complete guide
 - `.github/workflows/generate-rules.yml` - GitHub Action
 - `.vscode/tasks.json` - VS Code tasks

@@ -61,9 +61,9 @@ https://[your-github-username].github.io/collection-lsrules/generated/coding.lsr
 ```
 ✅ .github/workflows/generate-rules.yml  # Auto-generation
 ✅ config/paths.json                     # 10 apps
-✅ config/remotes.json                   # 82 domains  
+✅ config/domains.json                   # Tagged destination registry
 ✅ generated/coding.lsrules              # 820 rules
-✅ scripts/format-remotes.js             # VS Code formatter
+✅ scripts/format-remotes.js             # Registry formatter/merger
 ✅ scripts/generate-rules.js             # Rule generator
 ✅ docs/HOW-TO-USE.md                    # Complete guide
 ✅ docs/FORMATTER-GUIDE.md               # VS Code guide

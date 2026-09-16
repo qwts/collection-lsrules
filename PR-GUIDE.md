@@ -81,16 +81,16 @@ gh pr create \
 ```
 ✅ .github/workflows/generate-rules.yml  # Auto-generation workflow
 ✅ config/paths.json                     # 10 apps (7 desktop + 3 CLI)
-✅ config/remotes.json                   # 82 domains
+✅ config/domains.json                   # Tagged destination registry
 ✅ generated/coding.lsrules              # 820 rules (272KB)
 ✅ scripts/generate-rules.js             # Rule generator
-✅ scripts/format-remotes.js             # VS Code formatter
+✅ scripts/format-remotes.js             # Registry formatter/merger
 ✅ scripts/workflow-demo.sh              # Status check
 ✅ docs/HOW-TO-USE.md                    # Complete guide
 ✅ docs/FORMATTER-GUIDE.md               # VS Code formatter guide
 ✅ .vscode/tasks.json                    # 3 ready-to-run tasks
 ✅ .vscode/settings.json                 # Auto-format & validation
-✅ schemas/remotes-schema.json           # JSON validation
+✅ schemas/domains-schema.json           # JSON validation
 ✅ schemas/paths-schema.json             # JSON validation
 ✅ package.json                          # npm scripts
 ✅ .gitignore                            # Git ignore rules
