@@ -1029,17 +1029,6 @@
       "priority": "regular",
       "process": "identifier.EQHXZ8M8AV/com.google.Chrome",
       "owner": "any",
-      "remote-domains": "fpjs.io",
-      "ports": "443",
-      "protocol": "any",
-      "notes": "On Dec 13, 2024, Safari via com.apple.WebKit.Networking tried to establish a connection to fpjs.io. The request was allowed via connection alert.",
-      "action": "allow",
-      "direction": "outgoing"
-    },
-    {
-      "priority": "regular",
-      "process": "identifier.EQHXZ8M8AV/com.google.Chrome",
-      "owner": "any",
       "remote-domains": "freshchat.com",
       "ports": "443",
       "protocol": "any",
@@ -1264,17 +1253,6 @@
       "ports": "443",
       "protocol": "any",
       "notes": "On Dec 13, 2024, Safari via com.apple.WebKit.Networking tried to establish a connection to hpb.com. The request was allowed via connection alert.",
-      "action": "allow",
-      "direction": "outgoing"
-    },
-    {
-      "priority": "regular",
-      "process": "identifier.EQHXZ8M8AV/com.google.Chrome",
-      "owner": "any",
-      "remote-domains": "hs-scripts.com",
-      "ports": "443",
-      "protocol": "any",
-      "notes": "On Dec 13, 2024, Safari via com.apple.WebKit.Networking tried to establish a connection to hs-scripts.com. The request was allowed via connection alert.",
       "action": "allow",
       "direction": "outgoing"
     },
